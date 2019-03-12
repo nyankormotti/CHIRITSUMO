@@ -74,44 +74,6 @@ h1.title {
     margin-top:50px;
 }
 
-/* トップ画面*/
-h1#index-title {
-    font-size:48px;
-    text-align:center;
-    position:relative;
-    top:170px;
-}
-
-h2#index-subtitle {
-    font-size:36px;
-    text-align:center;
-    position:relative;
-    top:200px;
-}
-
-/* ログイン画面 */
-
-
-/* フッター */
-footer{
-    width:100%;
-    padding:15px;
-    /* height:40px; */
-    text-align:center;
-    line-height:150%;
-    background:#333;
-    color:white;
-    font-size:12px;
-}
-
-footer a{
-    text-decoration:none;
-    color:white;
-}
-
-footer a:hover {
-    text-decoration:underline;
-}
 /* ==================== */
 /* form */
 /* ==================== */
@@ -130,7 +92,7 @@ form{
     /* overflow:hidden; */
 }
 
-form > p {
+form > label > p {
     margin:0 0;
 }
 
@@ -144,11 +106,11 @@ input[type="password"]{
     background:#f6f5f5;
     border:none;
     width:380px;
-    height:40px;
+    height:60px;
     margin-bottom: 15px;
     font-size:20px;
     padding:10px 10px;
-    /* box-sizing:border-box; */
+    box-sizing:border-box;
 }
 
 .form .area-msg{
@@ -164,8 +126,24 @@ input[type="submit"]{
     font-size:20px;
     color:white;
     background:#333;
-    
-    
+}
+
+.form textarea {
+    background:#f6f5f5;
+    border:none;
+    font-size:20px;
+    padding:10px 10px;
+
+}
+
+.form .comment-su{
+    /* text-align:right; */
+    margin-bottom:20px;
+}
+
+.form .name-su {
+    /* margin-left: 175px; */
+    margin-bottom:3px;
 }
 
 input[type="submit"]:hover {
@@ -201,4 +179,88 @@ a:hover{
 /* ==================== */
 .btn-contner {
     overflow:hidden;
+}
+
+
+/* トップ画面*/
+h1#index-title {
+    font-size:48px;
+    text-align:center;
+    position:relative;
+    top:170px;
+}
+
+h2#index-subtitle {
+    font-size:36px;
+    text-align:center;
+    position:relative;
+    top:200px;
+}
+
+/* ログイン画面 */
+
+/* お問い合わせ画面 */
+
+.contact-form1{
+    width:600px;
+}
+
+.contact-form2 > p,
+.contact-from2 > .area-msg,
+.contact-form2 > input{
+    width:580px;
+}
+
+.contact-form2 > .contact-name{
+    width:200px;
+}
+
+/* 認証キー画面 */
+.reset-form {
+    width:450px;
+}
+
+.reset-form > input {
+    width:430px;
+}
+
+
+/* ============== */
+/* パスワード変更画面 */
+/* ============== */
+.pass-remind{
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+
+
+/* フッター */
+footer{
+    width:100%;
+    padding-top:15px;
+    padding-bottom:15px;
+    /* height:40px; */
+    text-align:center;
+    line-height:150%;
+    background:#333;
+    color:white;
+    font-size:12px;
+}
+
+footer a{
+    text-decoration:none;
+    color:white;
+}
+
+footer a:hover {
+    text-decoration:underline;
+}
+
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+/* エラー */
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+label.err input ,label.err select {
+    background:#f7dcd9;
 }

@@ -1,4 +1,16 @@
 <?php
+ // 共通関数呼び出し
+require('function.php');
+
+debug('=========================');
+debug('トップページ');
+debug('=========================');
+debugLogStart();
+?>
+
+
+<?php
+$siteTitle = 'トップ';
 require('head.php');
 ?>
 

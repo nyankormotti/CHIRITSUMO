@@ -1,0 +1,389 @@
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグセッションID：lrms84eeij568keedj0nau5t0c
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:17:56 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグセッションID：jhhirtu42npk44df2fbi6l66sb
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:19:14 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:19:14 Asia/Tokyo] PHP Fatal error:  Uncaught Error: Call to undefined function abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789() in /Applications/MAMP/htdocs/CHIRITSUMO/function.php:247
+Stack trace:
+#0 /Applications/MAMP/htdocs/CHIRITSUMO/passRemindSend.php(53): makeRandkey()
+#1 {main}
+  thrown in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 247
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグセッションID：57j41p80i1uaj5vlqmreeafmps
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:20:08 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:20:08 Asia/Tokyo] PHP Fatal error:  Uncaught Error: Call to undefined function sendMail() in /Applications/MAMP/htdocs/CHIRITSUMO/passRemindSend.php:77
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/CHIRITSUMO/passRemindSend.php on line 77
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグセッションID：rs9g4do5bp50unu70beg4va8k5
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+    [auth_key] => 0VPuJjwH
+    [auth_email] => nyanko@gmail.com
+    [auth_key_limit] => 1552402669
+)
+
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:27:49 Asia/Tokyo] デバッグセッションID：clh4qeql3cr834drmt1sri1dbu
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグセッションID：pre6beodb029nbf5srpdvr85g9
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:29:08 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:29:10 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:29:10 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:29:10 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:29:10 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:29:10 Asia/Tokyo] デバッグセッションID：mdosaeu0afa5ovk4ptabiq8uld
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグセッションID：16h5i16chdja4987n5cep7slvv
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+    [auth_key] => JFsfmyHV
+    [auth_email] => nyanko@gmail.com
+    [auth_key_limit] => 1552402756
+)
+
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:29:16 Asia/Tokyo] デバッグセッションID：qplbnec6rhs3uji0o3ao8vu5ut
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグセッションID：mvh295ulhm8hcbfo4991gdbn3a
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:31:48 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグセッションID：a8n49giinhfkqm0vo5bes4r6qn
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:32:26 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:32:27 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:32:27 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:32:27 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:32:27 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:32:27 Asia/Tokyo] デバッグセッションID：4e0bl0t8s3kbpiedsiv0qihq3g
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグセッションID：iamh5gje9brvik6l495r1mluic
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:32:36 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+    [auth_key] => olXPrLQn
+    [auth_email] => nyanko@gmail.com
+    [auth_key_limit] => 1552402957
+)
+
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:32:37 Asia/Tokyo] デバッグセッションID：kcemftodfu74icpnerl17ojj1l
+[12-Mar-2019 23:32:50 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:32:50 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:32:50 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:32:50 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:32:50 Asia/Tokyo] デバッグセッションID：s8li82g764hbc757h9cqgj1191
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグセッションID：29gls610r6cjcsad8ht7kmukhe
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:33:40 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:33:43 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:33:43 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:33:43 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:33:43 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:33:43 Asia/Tokyo] デバッグセッションID：71gmtbpusrogbbvs9oiudm1dvb
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグセッションID：19haijg0gpi5im0d5s559oabk3
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+    [auth_key] => LEYj6IqK
+    [auth_email] => nyanko@gmail.com
+    [auth_key_limit] => 1552403029
+)
+
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:33:49 Asia/Tokyo] デバッグセッションID：5q6k9u44qe6970ephvmmkkrk10
+[12-Mar-2019 23:37:10 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:37:10 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:37:10 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:37:10 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:10 Asia/Tokyo] デバッグセッションID：4ehpf7dvb6opps66iqsseluvqf
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグセッションID：1vilupe4k54cp9ibel51llial9
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:37:11 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:37:12 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:37:12 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:37:12 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:37:12 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:12 Asia/Tokyo] デバッグセッションID：n89vk7plaptp56pbqapsckhtmg
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグセッションID：62h5en1r1f8ms1usma4molh4v3
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ認証キー1
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+    [auth_key] => 8iKuH31Z
+    [auth_email] => nyanko@gmail.com
+    [auth_key_limit] => 1552403238
+)
+
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:18 Asia/Tokyo] デバッグセッションID：q33aaiubjd5o5j8ooauqgg7r5e
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグセッションID：1ecq3iffdpa4h529uaj5ai2mfs
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグ未処理分OK。
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:37:52 Asia/Tokyo] デバッグ認証OK。
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+)
+
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグセッションID：ngt8sjtq6jbobb57ccf22pbomg
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:37:53 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:40:00 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:40:00 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:40:00 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:40:00 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:40:00 Asia/Tokyo] デバッグセッションID：hr22fhoqu04od5m3fvoscnlkij
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグパスワード再発行メール送信ページ
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ=================
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグセッションID：4usjq5ltsc8mlmtk5o0csnj9v5
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグpost送信があります。
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグPOST情報：Array
+(
+    [email] => nyanko@gmail.com
+    [submit] => 送信
+)
+
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ未入力チェックOK
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ認証キー1
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+    [auth_key] => gGSFuE8I
+    [auth_email] => nyanko@gmail.com
+    [auth_key_limit] => 1552403403
+)
+
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:40:03 Asia/Tokyo] デバッグセッションID：4tk8eir8iu1sc6oiiplds5m5v5
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグパスワード再発行認証キー入力ページ
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグ====================
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグセッションID：r47ip59rn2s2f0ckvceldi9o79
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグ未処理分OK。
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグバリデーションOK
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグ認証OK。
+[12-Mar-2019 23:40:11 Asia/Tokyo] デバッグパスワード：Cg3SUy07
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグクエリ成功
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグメールを送信しました。
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグセッションの中身：Array
+(
+    [msg_success] => メールを送信しました。
+)
+
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグセッションID：af347kcuempccp8s71hmns7vld
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:40:12 Asia/Tokyo] デバッグ画面表示終了===================
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグログイン
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグ===========================
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグ============画面表示処理開始
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグセッションID：gtlhn3qilb9qimgkqmm65fnnbc
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグ未ログインユーザーです。
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグPOST送信があります。
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグバリデーションOKです。
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグクエリ成功。
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグクエリ：
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグクエリ結果の中身：Array
+(
+    [password] => $2y$10$43lZeCzDGAmp.Nt6jJyL5uWRW/fw7hoo5jdewnJfB.52L9gNkbCY6
+    [id] => 2
+)
+
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグパスワードがマッチしました。
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグログイン保持にチェックはありません。
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグセッション変数の中身：Array
+(
+    [msg_success] => 
+    [login_limit] => 3600
+    [user_id] => 2
+)
+
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグマイページへ遷移します
+[12-Mar-2019 23:40:27 Asia/Tokyo] デバッグ画面表示終了===================
