@@ -9,6 +9,9 @@ header {
     width:100%;
     height:70px;
     background:#333;
+    position:fixed; 
+    top:0px;
+    z-index:5;
 }
 
 #header-title {
@@ -158,6 +161,12 @@ input[type="submit"]:hover {
 .form .btn-mid{
     max-width:150px;
 }
+.contact-form > a {
+    display:block;
+    /* width:291px;
+    height:10px; */
+    padding-top:20px;
+}
 
 /* ==================== */
 /* リンク */
@@ -261,6 +270,23 @@ footer a:hover {
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 /* エラー */
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
-label.err input ,label.err select {
+label.err input ,label.err select,
+textarea.err {
     background:#f7dcd9;
+}
+
+/* ===================== */
+/* その他 */
+/* ===================== */
+.msg-slide {
+    position:fixed;
+    top:70;
+    width:100%;
+    height: 40px;
+    background:rgba(122,206,230,0.6);
+    text-align:center;
+    font-size:16px;
+    line-height:40px;
+    z-index:6;
+    margin-top:0;
 }

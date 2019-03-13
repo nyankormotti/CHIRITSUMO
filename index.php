@@ -21,6 +21,10 @@ require('head.php');
     require('header.php');
     ?>
 
+    <p id="js-show-msg" style="display:none;" class="msg-slide">
+        <?php echo getSessionFlash('msg_success'); ?>
+    </p>
+
     <!-- メインコンテンツ -->
     <section class="main">
         <h1 id="index-title">IN DREAMS BEGIN THE RESPONSIBILITIES</h1>

@@ -1,8 +1,8 @@
 $(function(){
 
     // headerを固定
-    var $htr = $('header');
-    $htr.attr({ 'style': 'position:fixed; top:0px;z-index:5;'});
+    // var $htr = $('header');
+    // $htr.attr({ 'style': 'position:fixed; top:0px;z-index:5;'});
 
     // メッセージ表示
     var $jsShowMsg = $('#js-show-msg');

@@ -255,6 +255,7 @@ function getFormData($str, $flg = false){
 function getSessionFlash($key){
     if(!empty($_SESSION[$key])){
         $data = $_SESSION[$key];
+        debug('if文中msg_success'.$data);
         $_SESSION[$key] = '';
         return $data;
     }
