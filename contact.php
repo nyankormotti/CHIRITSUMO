@@ -101,24 +101,32 @@ EOT;
                     $dbh = dbConnect();
                     // SQL文作成
                     $sql = 'SELECT email FROM user WHERE id = :id AND delete_flg = 0';
-                    $data = array(':id' >= $user_id);
+                    $data = array(':id' => $user_id);
                     // クエリ実行
-                    $stmt = queryPost($dbh, $sql, $sata);
+                    $stmt = queryPost($dbh, $sql, $data);
+
                     // クエリ実行結果の値を取得
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    debug('クエリデータ：' . print_r($result, true));
+                    debug('クエリデータ：' . print_r($result['email'], true));
 
                     // EmailがDBに登録されていない場合
-                    if ($stmt && array_shift($result)) {
+                    if ($stmt && $stmt->rowCount() > 0) {
                         debug('クエリ成功');
-
+                        debug('データ' . $user_id);
+                        debug('クエリデータ：' . print_r($result['email'], true));
                         // メール送信
-                        $from = $stmt['email'];
+                        $from = $result['email'];
                         $to = 'info@chiritsumo.com';
                         $subject = '【お問い合わせ】| ログインユーザーより';
                         $comment = <<<EOT
 {$user_comment}
 EOT;
                         sendMail($from, $to, $subject, $comment);
+                        debug('from：' . print_r($from, true));
+                        debug('to' . print_r($to, true));
+                        debug('subject' . print_r($subject, true));
+                        debug('comment：' . print_r($comment, true));
 
                         $_SESSION['msg_success'] = SUS03;
                         debug('メール送信成功' . print_r($_SESSION, true));
@@ -149,7 +157,7 @@ require('head.php');
     <?php
     require('header.php');
     ?>
-   
+
 
 
     <!-- メインコンテンツ -->
@@ -167,7 +175,7 @@ require('head.php');
                         ?>
                     <label class="<?php if (!empty($err_msg['email'])) echo 'err'; ?>">
                         <p class="form-email">メールアドレス<span class="area-msg">&nbsp;&nbsp;&nbsp;&nbsp;<?php if (!empty($err_msg['email'])) echo $err_msg['email']; ?></span></p>
-                        <input type="text" name="email" value="<?php if (!empty($err_msg['email'])) echo $_POST['email']; ?>">
+                        <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
                     </label>
                     <?php
 
@@ -176,23 +184,25 @@ require('head.php');
 
                     <label class="form-group">
                         <p class="comment">内容<?php if (empty($err_msg['comment'])) { ?>
-                            <span class="help-block">&nbsp;&nbsp;&nbsp;&nbsp;※200文字以内にてご入力ください</span>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="help-block">※200文字以内にてご入力ください</span></span>
                             <?php
 
                         } else {
                             ?>
-                            <span class="area-msg">
+                            <span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <?php
-                                echo  $err_msg['comment'];
-                                ?>
+                                <span class="area-msg">
+                                    <?php
+                                    echo  $err_msg['comment'];
+                                    ?>
+                                </span>
                             </span>
                             <?php
 
                         }
                         ?>
                         </p>
-                        <textarea class=" <?php if (!empty($err_msg['comment'])) echo 'err'; ?>" name="comment" id="" cols="63" rows="8" value="<?php if (!empty($err_msg['comment'])) echo $_POST['comment']; ?>"></textarea>
+                        <textarea class=" <?php if (!empty($err_msg['comment'])) echo 'err'; ?>" name="comment" id="count-contact-text" cols="63" rows="8" value="<?php if (!empty($_POST['comment'])) echo $_POST['comment']; ?>"></textarea>
                         <div class="comment-su"><span class="comment-count">0</span><span>/ 200</span></div>
 
                     </label>

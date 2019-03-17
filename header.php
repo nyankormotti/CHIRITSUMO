@@ -5,16 +5,18 @@
             ?>
         <a href="index.php">継続支援アプリ CHIRITSUMO!!</a>
         <?php
+
     } else {
         ?>
         <a href="mypage.php">継続支援アプリ CHIRITSUMO!!</a>
         <?php
+
     }
-        ?>
+    ?>
 
     </h1>
     <div id="top-nav">
-        <ul>
+        <ul class="menu-ul">
             <?php
             if (empty($_SESSION['user_id'])) {
                 ?>
@@ -25,8 +27,19 @@
 
         } else {
             ?>
-            <li><a href="mypage.php">マイページ</a></li>
+
             <li><a href="logout.php">ログアウト</a></li>
+            <li><a href="mypage.php">マイページ</a></li>
+            <li class="menu__single">
+                <a href="#" class="init-bottom">メニュー</a>
+                <ul class="menu__second-level">
+                    <li><a href="actualEdit.php">実績を記載</a></li>
+                    <li><a href="categoryEdit.php">カテゴリー編集</a></li>
+                    <li><a href="profEdit.php">プロフィール編集</a></li>
+                    <li><a href="chnangePassword.php">パスワード変更</a></li>
+                    <li><a href="withDraw.php">退会</a></li>
+                </ul>
+            </li>
 
             <?php
 

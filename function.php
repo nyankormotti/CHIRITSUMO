@@ -55,8 +55,12 @@ define('MSG06','半角英数字にて入力してください');
 define('MSG07','エラーが発生しました。しばらく待ってからやり直してください。');
 define('MSG08','そのEmailは既に登録されています。');
 define('MSG09','メールアドレスまたはパスワードが違います');
+define('MSG12', '現在のパスワードが違います');
+define('MSG13', '古いパスワードと同じです');
 define('MSG14','文字で入力してください。');
 define('MSG15','正しくありません。');
+define('SUS01', 'パスワードを変更しました。');
+define('SUS02',' プロフィールを変更しました');
 define('SUS03','メールを送信しました。');
 
 // ==========================
@@ -122,6 +126,8 @@ function validEmailDup($email){
         $stmt = queryPost( $dbh, $sql, $data);
         // クエリ結果を取得
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        debug('クエリ結果：'.print_r($stmt));
+        debug('クエリ結果2：'.print_r($result));
 
         if(!empty(array_shift($result))){
             $err_msg['email'] = MSG08;
@@ -132,6 +138,16 @@ function validEmailDup($email){
 
     }
 
+}
+
+// パスワードチェック
+function validPass($str,$key){
+    // 半角英数字チェック
+    validHalf($str, $key);
+    // 最大文字数チェック
+    validMaxLen($str, $key);
+    // 最小文字数チェック
+    validMinLen($str, $key);
 }
 
 // パスワード同一チェック
@@ -196,6 +212,33 @@ function queryPost($dbh, $sql, $data) {
     return $stmt;
 }
 
+// ユーザー情報を取得
+function getUser($u_id){
+    debug('ユーザー情報を取得します。');
+    // 例外処理
+    try{
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT * FROM user WHERE id = :u_id';
+        $data = array(':u_id' => $u_id);
+
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql, $data);
+
+        if($stmt){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }else{
+            return false;
+        }
+
+    }catch(Exception $e){
+        error_log('エラー発生：'.$e->getMessage());
+        degub('SQLエラーが発生しました。');
+
+    }
+}
+
 // ========================
 // メール送信
 // ========================
@@ -233,17 +276,32 @@ function getFormData($str, $flg = false){
         $method = $_POST;
     }
     global $dbFormData;
+    // debug('methodの情報：'.print_r($method,true));
+    // debug('getFormDataのDB情報:'.print_r($dbFormData[$str],true));
     // ユーザーデータがある場合
     if(!empty($dbFormData)){
+        // debug('ユーザー情報あり');
         // フォームのエラーがある場合
         if(!empty($err_msg[$str])){
+            // debug('エラーあり');
             // POSTにデータがある場合
             if(isset($method[$str])){
+                // debug('postに情報あり');
                 return sanitize($method[$str]);
             } else{
+                // debug('DBに情報あり');
+                return sanitize($dbFormData[$str]);
+            }
+        }else{
+            // POSTにデータがあり、DBの情報と違う場合
+            if(isset($method[$str]) && $method[$str] !== $dbFormData[$str]){
+                return sanitize($method[$str]);
+            }else{
+                // debug( 'DB情報：' . print_r($dbFormData[$str], true));
                 return sanitize($dbFormData[$str]);
             }
         }
+        
     } else{
         if(isset($method[$str])){
             return sanitize($method[$str]);
@@ -269,6 +327,55 @@ function makeRandkey($length = 8) {
         $str .= $chars[mt_rand(0,61)];
     }
     return $str;
+}
+
+// 画像処理
+function uploadImg($file,$key){
+    debug('画像アップロード処理開始');
+    debug('FILE情報'.print_r($file,true));
+
+    if(isset($file['error']) && is_int($file['error'])) {
+
+        // 例外処理
+        try{
+            // バリデーション
+            switch($file['error']) {
+                case UPLOAD_ERR_OK:
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    throw new RuntimeException('ファイルが選択されていません。');
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    throw new RuntimeException('ファイルサイズが大きすぎます。');
+                default:
+                    throw new RuntimeException('その他のエラーが派生しました。');
+            }
+
+            debug('$file_error:'.print_r( $file['error'],true));
+
+            $type = @exif_imagetype($file['tmp_name']);
+            if(!in_array($type,[IMAGETYPE_GIF,IMAGETYPE_JPEG,IMAGETYPE_PNG], true)){
+                throw new RuntimeException('画像形式が未対応です。');
+            }
+
+            $path = 'uploads/'.sha1_file($file['tmp_name']).image_type_to_extension($type);
+            if(!move_uploaded_file($file['tmp_name'],$path)){
+                throw new RuntimeException('ファイル保存時にエラーが発生しました');
+            }
+
+            chmod($path,0644);
+
+            debug('ファイルパスは正常にアップロードされました。');
+            debug('ファイルパス'.$path);
+            return $path;
+
+        } catch(Exception $e){
+
+            error_log('エラー発生'.$e->getMessage());
+            global $err_msg;
+            $err_msg[$key] = $e->getMessage();
+        }
+    }
 }
 
 ?>

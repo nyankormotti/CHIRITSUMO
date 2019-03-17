@@ -19,7 +19,7 @@ if(!empty($_SESSION['login_date'])) {
         // 最終ログイン日時を現在日時に更新
         $_SESSION['login_date'] = time();
 
-        if(basename($_SESSION['PHP_SELF']) === 'login.php'){
+        if(basename($_SERVER['PHP_SELF']) === 'login.php'){
             debug('マイページへ遷移します。');
             header("Location:mypage.php");
         }

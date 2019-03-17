@@ -1,125 +1,518 @@
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグお問い合わせページ
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグセッションID：lg14eadlil2u95jbvir6k9e61l
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグセッションArray
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグセッションID：fnecvl4faq06t4uc4mdre13a7f
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ取得したユーザー情報：Array
 (
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => 
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
 )
 
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグセッションIDがない場合の処理を実施します。
-[14-Mar-2019 01:10:51 Asia/Tokyo] PHP Notice:  Undefined variable: data in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 256
-[14-Mar-2019 01:10:51 Asia/Tokyo] デバッグif分前
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグお問い合わせページ
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグセッションID：isshjm9uhl7jvrnfu21ugcphhh
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグセッションArray
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグPOST送信があります
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグPOST送信：Array
 (
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [MAX_FILE_SIZE] => 3145728
 )
 
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグセッションIDがない場合の処理を実施します。
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグpost送信があります。
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグPOST情報：Array
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグFILE送信：Array
 (
-    [email] => web@web.com
-    [comment] => ああ
-    [submit] => 送信
+    [pic] => Array
+        (
+            [name] => ブチャラティ.jpg
+            [type] => image/jpeg
+            [tmp_name] => /Applications/MAMP/tmp/php/phpSWyxE0
+            [error] => 0
+            [size] => 80487
+        )
+
 )
 
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ未入力チェックOK
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグバリデーションOK
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグメールを送信しました。
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグメール送信成功Array
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ画像アップロード前
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ画像アップロード処理開始
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグFILE情報Array
 (
-    [msg_success] => メールを送信しました。
+    [name] => ブチャラティ.jpg
+    [type] => image/jpeg
+    [tmp_name] => /Applications/MAMP/tmp/php/phpSWyxE0
+    [error] => 0
+    [size] => 80487
 )
 
-[14-Mar-2019 01:11:54 Asia/Tokyo] PHP Notice:  Undefined variable: data in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 256
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグif分前
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグif文中msg_successメールを送信しました。
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ=========================
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグトップページ
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ=========================
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグセッションID：55dr08jumnbbgg57mg22honjbf
-[14-Mar-2019 01:11:54 Asia/Tokyo] PHP Notice:  Undefined variable: data in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 256
-[14-Mar-2019 01:11:54 Asia/Tokyo] デバッグif分前
-[14-Mar-2019 01:13:11 Asia/Tokyo] デバッグ===========================
-[14-Mar-2019 01:13:11 Asia/Tokyo] デバッグ会員登録
-[14-Mar-2019 01:13:11 Asia/Tokyo] デバッグ===========================
-[14-Mar-2019 01:13:11 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:13:11 Asia/Tokyo] デバッグセッションID：jmhijj31hfgim6q0op5319rkue
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグ===========================
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグ会員登録
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグ===========================
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグセッションID：sr195nf8mpb0k839puj07iv7ts
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグポスト名前：1
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグポストEmail：1
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグemail:nyanko3@gmail.com
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグクエリ成功。
-[14-Mar-2019 01:13:28 Asia/Tokyo] デバッグクエリ：
-[14-Mar-2019 01:13:29 Asia/Tokyo] デバッグクエリ成功。
-[14-Mar-2019 01:13:29 Asia/Tokyo] デバッグクエリ：
-[14-Mar-2019 01:13:29 Asia/Tokyo] デバッグセッション変数の中身：Array
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ$file_error:0
+[17-Mar-2019 22:36:06 Asia/Tokyo] PHP Warning:  move_uploaded_file(uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 362
+[17-Mar-2019 22:36:06 Asia/Tokyo] PHP Warning:  move_uploaded_file(): Unable to move '/Applications/MAMP/tmp/php/phpSWyxE0' to 'uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg' in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 362
+[17-Mar-2019 22:36:06 Asia/Tokyo] エラー発生ファイル保存時にエラーが発生しました
+[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ画像アップロード後
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグセッションID：p0qmjbf6mpvplt6akokeb856j5
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ取得したユーザー情報：Array
 (
-    [msg_success] => 
-    [login_date] => 1552493609
-    [login_limit] => 3600
-    [user_id] => 7
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => 
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
 )
 
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグお問い合わせページ
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグセッションID：025eckiuobrt0dfmthscgbavbm
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグセッションArray
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグPOST送信があります
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグPOST送信：Array
 (
-    [msg_success] => 
-    [login_date] => 1552493609
-    [login_limit] => 3600
-    [user_id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [MAX_FILE_SIZE] => 3145728
 )
 
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグログイン済みユーザーです。
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグログイン有効期限切れです。
-[14-Mar-2019 01:13:30 Asia/Tokyo] PHP Notice:  Undefined index: PHP_SELF in /Applications/MAMP/htdocs/CHIRITSUMO/auth.php on line 22
-[14-Mar-2019 01:13:30 Asia/Tokyo] デバッグセッションIDがある場合の処理を開始します。
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグお問い合わせページ
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグ==============
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグ============画面表示処理開始
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグセッションID：n9riq2hp2c6t8bqp32sfcsatvr
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグセッションArray
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグFILE送信：Array
 (
-    [msg_success] => 
-    [login_date] => 1552493610
-    [login_limit] => 3600
-    [user_id] => 7
+    [pic] => Array
+        (
+            [name] => ブチャラティ.jpg
+            [type] => image/jpeg
+            [tmp_name] => /Applications/MAMP/tmp/php/phpXwJtSo
+            [error] => 0
+            [size] => 80487
+        )
+
 )
 
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグログイン済みユーザーです。
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグログイン有効期限切れです。
-[14-Mar-2019 01:13:34 Asia/Tokyo] PHP Notice:  Undefined index: PHP_SELF in /Applications/MAMP/htdocs/CHIRITSUMO/auth.php on line 22
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグセッションIDがある場合の処理を開始します。
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグpost送信があります
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグPOST情報1
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグ未入力チェックOK
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグバリデーションOK
-[14-Mar-2019 01:13:34 Asia/Tokyo] PHP Notice:  Undefined variable: sata in /Applications/MAMP/htdocs/CHIRITSUMO/contact.php on line 106
-[14-Mar-2019 01:13:34 Asia/Tokyo] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: no parameters were bound in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 186
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグクエリに失敗しました。
-[14-Mar-2019 01:13:34 Asia/Tokyo] PHP Notice:  Array to string conversion in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 189
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグSQLエラー：1
-[14-Mar-2019 01:13:34 Asia/Tokyo] デバッグ失敗したSQL：PDOStatement Object
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ画像アップロード前
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ画像アップロード処理開始
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグFILE情報Array
 (
-    [queryString] => SELECT email FROM user WHERE id = :id AND delete_flg = 0
+    [name] => ブチャラティ.jpg
+    [type] => image/jpeg
+    [tmp_name] => /Applications/MAMP/tmp/php/phpXwJtSo
+    [error] => 0
+    [size] => 80487
 )
 
-[14-Mar-2019 01:13:34 Asia/Tokyo] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on integer in /Applications/MAMP/htdocs/CHIRITSUMO/contact.php:108
-Stack trace:
-#0 {main}
-  thrown in /Applications/MAMP/htdocs/CHIRITSUMO/contact.php on line 108
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ$file_error:0
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグファイルパスは正常にアップロードされました。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグファイルパスuploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ画像アップロード後uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ未入力チェックOK
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグバリデーションチェックOK
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグマイページへ移動します。
+[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグif文中msg_success プロフィールを変更しました
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグセッションID：68544m05gt1u74i5fji5724d9e
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグセッションID：5de9c3omf37rt7coadcec60d0b
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグセッションID：2b3pd1avuhrrpg8ivulq6pnn69
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグセッションID：3ngsvjt4rpmsjl6hf5l8i1c5t4
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグセッションID：a8r5h2d23fv1j7rjtrc3rtn72c
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグセッションID：4e00oso9fgfd34f9d1lpmckjin
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグセッションID：8amprofdv1j7l2cmbb2v591blp
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグセッションID：trij2gleihkbnffrj5mlbpa5rs
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグセッションID：profjcbqqef5ln9mf9ud1de5gg
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ1
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグPOST送信があります
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグPOST送信：Array
+(
+    [username] => にゃんこ4
+    [email] => nyanko4@gmail.com
+    [MAX_FILE_SIZE] => 3145728
+)
+
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグFILE送信：Array
+(
+    [pic] => Array
+        (
+            [name] => ラグたん.jpg
+            [type] => image/jpeg
+            [tmp_name] => /Applications/MAMP/tmp/php/phpYDam9E
+            [error] => 0
+            [size] => 15711
+        )
+
+)
+
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ画像アップロード前
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ画像アップロード処理開始
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグFILE情報Array
+(
+    [name] => ラグたん.jpg
+    [type] => image/jpeg
+    [tmp_name] => /Applications/MAMP/tmp/php/phpYDam9E
+    [error] => 0
+    [size] => 15711
+)
+
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ$file_error:0
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグファイルパスは正常にアップロードされました。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグファイルパスuploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ画像アップロード後uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ未入力チェックOK
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグバリデーションチェックOK
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグマイページへ移動します。
+[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグif文中msg_success プロフィールを変更しました
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグセッションID：ff6lbuqmg3tkadmt70hd7di84r
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ4
+    [email] => nyanko4@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグセッションID：t349utdajjmnnrhris7pt2otki
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ4
+    [email] => nyanko4@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグPOST送信があります
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグPOST送信：Array
+(
+    [username] => にゃんこ4
+    [email] => nyanko3@gmail.com
+    [MAX_FILE_SIZE] => 3145728
+)
+
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグFILE送信：Array
+(
+    [pic] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)
+
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ画像アップロード前
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ画像アップロード後uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ未入力チェックOK
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグバリデーションチェックOK
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグマイページへ移動します。
+[17-Mar-2019 22:55:08 Asia/Tokyo] デバッグif文中msg_success プロフィールを変更しました
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグセッションID：dh04dvedss3u0vqpmirmgj7mui
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ4
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグセッションID：skkk48aaghhvsps3a31k2edjfc
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ4
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグプロフィール編集
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ==================
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ============画面表示処理開始
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグセッションID：ltm03jv8qfo1tfej7k4qclg23f
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグログイン済みユーザーです。
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグログイン有効期限切れです。
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグユーザー情報を取得します。
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグクエリ成功。
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグクエリ：
+[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+(
+    [id] => 7
+    [username] => にゃんこ4
+    [email] => nyanko3@gmail.com
+    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
+    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+    [login_time] => 2019-03-14 01:13:29
+    [delete_flg] => 0
+    [create_date] => 2019-03-14 01:13:29
+    [update_date] => 2019-03-14 01:13:29
+)
+
