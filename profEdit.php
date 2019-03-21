@@ -30,7 +30,7 @@ if (!empty($_POST)) {
     // 画像をアップロードし、パスを格納
     $pic = (!empty($_FILES['pic']['name'])) ? uploadImg($_FILES['pic'], 'pic') : '';
     $pic = (empty($pic) && !empty($dbFormData['pic'])) ? $dbFormData['pic'] : $pic;
-    debug('画像アップロード後'.$pic);
+    debug('画像アップロード後' . $pic);
 
     // 未入力チェック
     validInput($username, 'username');
@@ -63,8 +63,8 @@ if (!empty($_POST)) {
                 // DBへの接続
                 $dbh = dbConnect();
                 // SQL文作成
-                $sql = 'UPDATE user SET username = :u_name, email = :email, pic = :pic';
-                $data = array(':u_name' => $username, ':email' => $email, ':pic' => $pic);
+                $sql = 'UPDATE user SET username = :u_name, email = :email, pic = :pic WHERE id = :u_id';
+                $data = array(':u_name' => $username, ':email' => $email, ':pic' => $pic, ':u_id' => $_SESSION['user_id']);
                 // クエリ実行
                 $stmt = queryPost($dbh, $sql, $data);
 
@@ -141,7 +141,7 @@ require('head.php');
                         ?>
                     </div>
                     <div class="btn-container">
-                        <input type="submit" class="btn btn-mid" value="変更する">
+                        <input type="submit" name="submit" class="btn btn-mid" value="変更する">
                     </div>
                     </label>
                 </form>

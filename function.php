@@ -55,13 +55,21 @@ define('MSG06','半角英数字にて入力してください');
 define('MSG07','エラーが発生しました。しばらく待ってからやり直してください。');
 define('MSG08','そのEmailは既に登録されています。');
 define('MSG09','メールアドレスまたはパスワードが違います');
+define('MSG10','日付が正しくありません。');
+define('MSG11','存在しない日付です。');
 define('MSG12', '現在のパスワードが違います');
 define('MSG13', '古いパスワードと同じです');
 define('MSG14','文字で入力してください。');
 define('MSG15','正しくありません。');
+define('MSG16',' カテゴリーを選択してください。');
+define('MSG17','そのカテゴリーは使用されています。');
 define('SUS01', 'パスワードを変更しました。');
 define('SUS02',' プロフィールを変更しました');
 define('SUS03','メールを送信しました。');
+define('SUS04','カテゴリーを登録しました。');
+define('SUS05','カテゴリーを削除しました。');
+define('SUS06','実績を記載しました。');
+
 
 // ==========================
 // グローバル変数
@@ -135,9 +143,7 @@ function validEmailDup($email){
     }catch(Exception $e) {
         error_log('エラー発生：'.$e->getMessage());
         $err_msg['common'] = MSG07;
-
     }
-
 }
 
 // パスワードチェック
@@ -156,6 +162,41 @@ function validMatch($str1,$str2,$key){
         global $err_msg;
         $err_msg[$key] = MSG05;
     }
+}
+
+// 日付形式チェック
+// function validDateFormat($str,$key){
+//     debug('日付'.$str);
+//     $v_yaer = mb_substr($str,0,4);
+//     $v_month = mb_substr($str,5,2);
+//     $v_day = mb_substr($str,8);
+//     debug('年：'. $v_yaer);
+//     debug('月：'. $v_month);
+//     debug('日：'. $v_day);
+//     if (!strptime($str, '%Y-%m-%d') || !is_int($v_yaer) || !is_int($v_month) || !is_int($v_day)) {
+//         global $err_msg;
+//         $err_msg[$key] = MSG10;
+        
+//     }
+    
+// }
+
+// 日付チェック
+function validDate($str, $key){
+    list($Y, $m, $d) = explode('-', $str);
+    debug('年２：'.$Y);
+    debug('月２：'.$m);
+    debug('日２：'.$d);
+
+    if(!is_numeric($Y) || !is_numeric($m) || !is_numeric($d)){
+        global $err_msg;
+        $err_msg[$key] = MSG10;
+    }
+    if (empty($err_msg['$key']) && checkdate($m, $d, $Y) !== true) {
+        global $err_msg;
+        $err_msg[$key] = MSG11;
+    } 
+    
 }
 
 // 固定長チェック
@@ -220,7 +261,7 @@ function getUser($u_id){
         // DB接続
         $dbh = dbConnect();
         // SQL文作成
-        $sql = 'SELECT * FROM user WHERE id = :u_id';
+        $sql = 'SELECT * FROM user WHERE id = :u_id AND delete_flg = 0';
         $data = array(':u_id' => $u_id);
 
         // クエリ実行
@@ -234,7 +275,181 @@ function getUser($u_id){
 
     }catch(Exception $e){
         error_log('エラー発生：'.$e->getMessage());
-        degub('SQLエラーが発生しました。');
+        degug('SQLエラーが発生しました。');
+
+    }
+}
+
+// GETで取得した実績IDに紐づく実績情報を取得
+function getPerformance($u_id,$p_id){
+    debug('実績情報を取得します。');
+    debug('ユーザーID：'.$u_id);
+    debug('実績ID：'.$p_id);
+    // 例外処理
+    try{
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT * FROM performance WHERE user_id = :u_id AND id = :p_id AND delete_flg = 0';
+        $data = array(':u_id' => $u_id, ':p_id' => $p_id);
+        // クエリ実行
+        $stmt = queryPost($dbh,$sql,$data);
+
+        if($stmt){
+            // クエリ結果のデータを１レコード返却
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }else{
+            return false;
+        }
+    }catch(Exception $e){
+        error_log('エラー発生：'.$e->getMessage());
+        debug('SQLエラーが発生しました。');
+    }
+}
+
+// ユーザーIDに紐づく全ての実績情報を取得
+function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMinNum = 1 ,$span = 20)
+{
+    debug('実績情報を取得します。');
+    debug('ユーザーID：' . $u_id);
+    // 例外処理
+    try {
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
+        WHERE p.user_id = :u_id AND p.delete_flg = 0';
+        if(!empty($category)) $sql.=' AND category_id = '. $category;
+        if(!empty($startDate) && !empty($endDate)) $sql.=' AND action_date >= '.$startDate.' AND action_date <= '.$endDate;
+        if(!empty($sort)) {
+            switch($sort){
+                  case 1:
+                    $sql .= ' ORDER BY action_date ASC';
+                    break;
+                case 2:
+                    $sql .= ' ORDER BY action_date DESC';
+                    break;
+            }
+        } else{
+            $sql .=' ORDER BY action_date ASC';
+        }
+        $data = array(':u_id' => $u_id);
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql, $data);
+        $rst['total'] = $stmt->rowCount();
+        $rst['total_page'] = ceil( $rst['total']/$span);
+
+        // ページング用
+        $sql = 'SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
+        WHERE p.user_id = :u_id AND p.delete_flg = 0';
+        if(!empty($category)) $sql.=' AND category_id = '.$category;
+        if(! empty($startDate) && !empty($endDate)) $sql.=' AND action_date >= '. $startDate.' AND action_ d ate <= '.$endDate;
+        if(!empty($sort)) {
+             switch($sort){
+                 case 1:
+                    $sql .= ' ORDER BY action_date ASC';
+                    break;
+                case 2:
+                    $sql .= ' ORDER BY action_date DESC';
+                    break;
+            }
+        } else{
+            $sql .=' ORDER BY action_date ASC';
+        }
+        $sql .= ' LIMIT '.$span.' OFFSET '.$currentMinNum;
+        $data = array(':u_id' => $u_id);
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql, $data);
+        debug('SQL：'.$sql);
+
+        if ($stmt && $stmt->rowCount() > 0) {
+            //クエリ結果のデータを全レコードを格納
+            $rst['data'] = $stmt->fetchAll();
+            return $rst;
+        } else {
+            return false;
+        }
+    } catch (Exception $e) {
+        error_log('エラー発生：' . $e->getMessage());
+        debug('SQLエラーが発生しました。');
+    }
+}
+
+// カテゴリー情報を取得
+function getCategory($u_id){
+    debug('カテゴリー情報を取得します。');
+    // 例外処理
+    try{
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT * FROM category WHERE user_id = :u_id AND delete_flg = 0';
+        $data = array(':u_id' => $u_id);
+
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql,$data);
+
+        if($stmt){
+            return $stmt->fetchAll();
+        }else{
+            return false;
+        }
+
+    }catch(Exception $e){
+        error_log('エラー発生：'.$e->getMessage());
+        debug('SQLエラーが発生しました。');
+    }
+}
+
+// カテゴリーIDに紐づく実績情報の件数を取得
+function getPerfCate($c_id){
+    debug('カテゴリー情報を取得します。');
+    // 例外処理
+    try{
+         // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT * FROM performance WHERE category_id = :c_id AND delete_flg = 0';
+        $data = array(':c_id' => $c_id);
+
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql,$data );
+
+        if($stmt && $stmt->rowCount() > 0){
+            debug('true');
+             return true;
+        }else{
+            debug('false');
+             return false;
+        }
+    }catch (Exception $e){
+         error_log('エラー発生：'.$e-> getMessage());
+        debug('SQLエラーが発生しました。');
+    }
+}
+
+// 累計時間を取得
+function getTotalTime($u_id){
+    debug('累計時間を取得します。');
+    // 例外処理
+    try{
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT * FROM total_active_time WHERE user_id = :u_id AND delete_flg = 0';
+        $data = array(':u_id' => $u_id);
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql, $data);
+        if($stmt){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    }catch(Exception $e){
+        error_log('エラー発生：'.$e->getMessage());
+        debug('SQLエラーが発生しました。');
 
     }
 }
@@ -377,5 +592,27 @@ function uploadImg($file,$key){
         }
     }
 }
+
+// 時刻計算(加算)
+function timeSum($dbPerfData)
+{
+    $total_time = 0;
+    // $total_minute = 0;
+    foreach ($dbPerfData['data'] as $key => $val) {
+        $total_time = $total_time + strtotime($val['action_time']);
+        debug(''.print_r(idate($val['action_time']),true));
+    }
+    
+    
+    debug(''.print_r(( floor($total_time / 3600)%24 . ':' . floor($total_time / 60) % 60),true));
+
+    return floor($total_time/3600) . ':' . floor( $total_time /60)%60;
+}
+// function getSumTime($source_time, $add_time)
+// {
+//     $source_times = explode(":", $source_time);
+//     $add_times = explode(":", $add_time);
+//     return date("H:i:s", mktime($source_times[0] + $add_times[0], $source_times[1] + $add_times[1], $source_times[2] + $add_times[2]));
+// }
 
 ?>

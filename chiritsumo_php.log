@@ -1,434 +1,639 @@
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグセッションID：fnecvl4faq06t4uc4mdre13a7f
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ=================
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグマイページ
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ=================
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ============画面表示処理開始
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグセッションID：vtlcnp4a03pfgqqvbgb63fbhf9
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグログイン済みユーザーです。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグログイン有効期限切れです。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグユーザー情報を取得します。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ実績情報を取得します。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグユーザーID：3
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグSQL：SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
+        WHERE p.user_id = :u_id AND p.delete_flg = 0 ORDER BY action_date ASC LIMIT 20 OFFSET 0
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ取得したユーザー情報：Array
 (
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => 
-    [login_time] => 2019-03-14 01:13:29
+    [id] => 3
+    [username] => にゃんころもっち
+    [email] => nyankoromotti@gmail.com
+    [password] => $2y$10$MKVhuZr49phUtPfuX8Oz8.PvQrF6N2jDHTv3imzI242EfrT645jSu
+    [pic] => uploads/59b6d7ffdfafea474672f3e7b3df264e743fac4f.jpeg
+    [login_time] => 2019-03-18 19:24:24
     [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
+    [create_date] => 2019-03-18 19:24:24
+    [update_date] => 2019-03-18 19:24:24
 )
 
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグPOST送信があります
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグPOST送信：Array
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ取得した実績情報：Array
 (
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [MAX_FILE_SIZE] => 3145728
-)
-
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグFILE送信：Array
-(
-    [pic] => Array
+    [total] => 20
+    [total_page] => 1
+    [data] => Array
         (
-            [name] => ブチャラティ.jpg
-            [type] => image/jpeg
-            [tmp_name] => /Applications/MAMP/tmp/php/phpSWyxE0
-            [error] => 0
-            [size] => 80487
+            [0] => Array
+                (
+                    [title] => っっっっっf
+                    [action_date] => 2018-10-07
+                    [action_time] => 00:07:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [1] => Array
+                (
+                    [title] => aaaa
+                    [action_date] => 2018-11-06
+                    [action_time] => 00:06:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [2] => Array
+                (
+                    [title] => html
+                    [action_date] => 2018-12-18
+                    [action_time] => 00:50:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ミスタ
+                )
+
+            [3] => Array
+                (
+                    [title] => FW
+                    [action_date] => 2019-01-02
+                    [action_time] => 03:50:00
+                    [pic1] => 
+                    [pic2] => uploads/b5763db4fce53e257b7bba8a3825726476e3e5c4.png
+                    [pic3] => 
+                    [category_name] => トリッシュ
+                )
+
+            [4] => Array
+                (
+                    [title] => aaaaaa
+                    [action_date] => 2019-02-06
+                    [action_time] => 02:29:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => uploads/9c24b15788aff394c00c429e18abe9ea9c555a57.png
+                    [category_name] => ナランチャ
+                )
+
+            [5] => Array
+                (
+                    [title] => ssss
+                    [action_date] => 2019-02-11
+                    [action_time] => 01:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [6] => Array
+                (
+                    [title] => aa
+                    [action_date] => 2019-02-12
+                    [action_time] => 01:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [7] => Array
+                (
+                    [title] => ssss
+                    [action_date] => 2019-02-12
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ミスタ
+                )
+
+            [8] => Array
+                (
+                    [title] => ッッッg
+                    [action_date] => 2019-03-01
+                    [action_time] => 00:06:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [9] => Array
+                (
+                    [title] => ddddd
+                    [action_date] => 2019-03-01
+                    [action_time] => 00:25:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [10] => Array
+                (
+                    [title] => っっd
+                    [action_date] => 2019-03-04
+                    [action_time] => 02:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [11] => Array
+                (
+                    [title] => js
+                    [action_date] => 2019-03-05
+                    [action_time] => 04:03:00
+                    [pic1] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+                    [pic2] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [12] => Array
+                (
+                    [title] => ddd
+                    [action_date] => 2019-03-06
+                    [action_time] => 00:03:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [13] => Array
+                (
+                    [title] => ああああ
+                    [action_date] => 2019-03-06
+                    [action_time] => 19:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [14] => Array
+                (
+                    [title] => ッッッs
+                    [action_date] => 2019-03-06
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [15] => Array
+                (
+                    [title] => っっっf
+                    [action_date] => 2019-03-08
+                    [action_time] => 00:04:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [16] => Array
+                (
+                    [title] => php
+                    [action_date] => 2019-03-12
+                    [action_time] => 02:10:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [17] => Array
+                (
+                    [title] => css
+                    [action_date] => 2019-03-22
+                    [action_time] => 01:40:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [18] => Array
+                (
+                    [title] => fff
+                    [action_date] => 2019-03-22
+                    [action_time] => 02:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [19] => Array
+                (
+                    [title] => っっs
+                    [action_date] => 2020-02-10
+                    [action_time] => 06:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
         )
 
 )
 
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ画像アップロード前
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ画像アップロード処理開始
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグFILE情報Array
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ取得日時：2018-10-07
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ現在時刻：1553178710
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ現在時刻：1538838000
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ差分：14340710
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] PHP Warning:  idate(): idate format is one char in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 603
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ16:53
+[21-Mar-2019 23:31:50 Asia/Tokyo] デバッグ累計時間：8628352:53
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ=================
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグマイページ
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ=================
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ============画面表示処理開始
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグセッションID：omii59ibbt69gnto7chgnvjtdo
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグログイン済みユーザーです。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグログイン有効期限切れです。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグユーザー情報を取得します。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ実績情報を取得します。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグユーザーID：3
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグSQL：SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
+        WHERE p.user_id = :u_id AND p.delete_flg = 0 ORDER BY action_date ASC LIMIT 20 OFFSET 0
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ取得したユーザー情報：Array
 (
-    [name] => ブチャラティ.jpg
-    [type] => image/jpeg
-    [tmp_name] => /Applications/MAMP/tmp/php/phpSWyxE0
-    [error] => 0
-    [size] => 80487
-)
-
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ$file_error:0
-[17-Mar-2019 22:36:06 Asia/Tokyo] PHP Warning:  move_uploaded_file(uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 362
-[17-Mar-2019 22:36:06 Asia/Tokyo] PHP Warning:  move_uploaded_file(): Unable to move '/Applications/MAMP/tmp/php/phpSWyxE0' to 'uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg' in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 362
-[17-Mar-2019 22:36:06 Asia/Tokyo] エラー発生ファイル保存時にエラーが発生しました
-[17-Mar-2019 22:36:06 Asia/Tokyo] デバッグ画像アップロード後
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグセッションID：p0qmjbf6mpvplt6akokeb856j5
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => 
-    [login_time] => 2019-03-14 01:13:29
+    [id] => 3
+    [username] => にゃんころもっち
+    [email] => nyankoromotti@gmail.com
+    [password] => $2y$10$MKVhuZr49phUtPfuX8Oz8.PvQrF6N2jDHTv3imzI242EfrT645jSu
+    [pic] => uploads/59b6d7ffdfafea474672f3e7b3df264e743fac4f.jpeg
+    [login_time] => 2019-03-18 19:24:24
     [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
+    [create_date] => 2019-03-18 19:24:24
+    [update_date] => 2019-03-18 19:24:24
 )
 
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグPOST送信があります
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグPOST送信：Array
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ取得した実績情報：Array
 (
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [MAX_FILE_SIZE] => 3145728
-)
-
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグFILE送信：Array
-(
-    [pic] => Array
+    [total] => 20
+    [total_page] => 1
+    [data] => Array
         (
-            [name] => ブチャラティ.jpg
-            [type] => image/jpeg
-            [tmp_name] => /Applications/MAMP/tmp/php/phpXwJtSo
-            [error] => 0
-            [size] => 80487
+            [0] => Array
+                (
+                    [title] => っっっっっf
+                    [action_date] => 2018-10-07
+                    [action_time] => 00:07:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [1] => Array
+                (
+                    [title] => aaaa
+                    [action_date] => 2018-11-06
+                    [action_time] => 00:06:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [2] => Array
+                (
+                    [title] => html
+                    [action_date] => 2018-12-18
+                    [action_time] => 00:50:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ミスタ
+                )
+
+            [3] => Array
+                (
+                    [title] => FW
+                    [action_date] => 2019-01-02
+                    [action_time] => 03:50:00
+                    [pic1] => 
+                    [pic2] => uploads/b5763db4fce53e257b7bba8a3825726476e3e5c4.png
+                    [pic3] => 
+                    [category_name] => トリッシュ
+                )
+
+            [4] => Array
+                (
+                    [title] => aaaaaa
+                    [action_date] => 2019-02-06
+                    [action_time] => 02:29:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => uploads/9c24b15788aff394c00c429e18abe9ea9c555a57.png
+                    [category_name] => ナランチャ
+                )
+
+            [5] => Array
+                (
+                    [title] => ssss
+                    [action_date] => 2019-02-11
+                    [action_time] => 01:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [6] => Array
+                (
+                    [title] => aa
+                    [action_date] => 2019-02-12
+                    [action_time] => 01:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [7] => Array
+                (
+                    [title] => ssss
+                    [action_date] => 2019-02-12
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ミスタ
+                )
+
+            [8] => Array
+                (
+                    [title] => ッッッg
+                    [action_date] => 2019-03-01
+                    [action_time] => 00:06:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [9] => Array
+                (
+                    [title] => ddddd
+                    [action_date] => 2019-03-01
+                    [action_time] => 00:25:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [10] => Array
+                (
+                    [title] => っっd
+                    [action_date] => 2019-03-04
+                    [action_time] => 02:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [11] => Array
+                (
+                    [title] => js
+                    [action_date] => 2019-03-05
+                    [action_time] => 04:03:00
+                    [pic1] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+                    [pic2] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [12] => Array
+                (
+                    [title] => ddd
+                    [action_date] => 2019-03-06
+                    [action_time] => 00:03:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [13] => Array
+                (
+                    [title] => ああああ
+                    [action_date] => 2019-03-06
+                    [action_time] => 19:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [14] => Array
+                (
+                    [title] => ッッッs
+                    [action_date] => 2019-03-06
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [15] => Array
+                (
+                    [title] => っっっf
+                    [action_date] => 2019-03-08
+                    [action_time] => 00:04:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [16] => Array
+                (
+                    [title] => php
+                    [action_date] => 2019-03-12
+                    [action_time] => 02:10:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [17] => Array
+                (
+                    [title] => css
+                    [action_date] => 2019-03-22
+                    [action_time] => 01:40:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [18] => Array
+                (
+                    [title] => fff
+                    [action_date] => 2019-03-22
+                    [action_time] => 02:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [19] => Array
+                (
+                    [title] => っっs
+                    [action_date] => 2020-02-10
+                    [action_time] => 06:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
         )
 
 )
 
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ画像アップロード前
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ画像アップロード処理開始
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグFILE情報Array
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ取得日時：2018-10-07
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ現在時刻：1553180269
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ現在時刻：1538838000
+[21-Mar-2019 23:57:49 Asia/Tokyo] デバッグ差分：14342269
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグ=====================
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグ実績記載ページ
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグ=====================
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグ============画面表示処理開始
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグセッションID：88ks1s1en791lb9iuqjunc7707
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグログイン済みユーザーです。
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグログイン有効期限切れです。
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグカテゴリー情報を取得します。
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグ実績ID：
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグフォーム用データ：
+[21-Mar-2019 23:58:51 Asia/Tokyo] PHP Notice:  Undefined variable: firstReg_flg in /Applications/MAMP/htdocs/CHIRITSUMO/actualEdit.php on line 28
+[21-Mar-2019 23:58:51 Asia/Tokyo] デバッグ初回判定ではない
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ=====================
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ実績記載ページ
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ=====================
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ============画面表示処理開始
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグセッションID：ti70mbkb2s4mk3rjtk2fn6a1hl
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグログイン済みユーザーです。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグログイン有効期限切れです。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグカテゴリー情報を取得します。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ実績ID：
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグフォーム用データ：
+[21-Mar-2019 23:59:00 Asia/Tokyo] PHP Notice:  Undefined variable: firstReg_flg in /Applications/MAMP/htdocs/CHIRITSUMO/actualEdit.php on line 28
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ初回判定ではない
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグPOST送信があります。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグPOST情報：Array
 (
-    [name] => ブチャラティ.jpg
-    [type] => image/jpeg
-    [tmp_name] => /Applications/MAMP/tmp/php/phpXwJtSo
-    [error] => 0
-    [size] => 80487
-)
-
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ$file_error:0
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグファイルパスは正常にアップロードされました。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグファイルパスuploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ画像アップロード後uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグ未入力チェックOK
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグバリデーションチェックOK
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグマイページへ移動します。
-[17-Mar-2019 22:51:15 Asia/Tokyo] デバッグif文中msg_success プロフィールを変更しました
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグセッションID：68544m05gt1u74i5fji5724d9e
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:51:24 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグセッションID：5de9c3omf37rt7coadcec60d0b
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:53:23 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグセッションID：2b3pd1avuhrrpg8ivulq6pnn69
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:04 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグセッションID：3ngsvjt4rpmsjl6hf5l8i1c5t4
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:13 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグセッションID：a8r5h2d23fv1j7rjtrc3rtn72c
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:18 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグセッションID：4e00oso9fgfd34f9d1lpmckjin
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:24 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグセッションID：8amprofdv1j7l2cmbb2v591blp
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:30 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグセッションID：trij2gleihkbnffrj5mlbpa5rs
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:37 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグセッションID：profjcbqqef5ln9mf9ud1de5gg
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ1
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグPOST送信があります
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグPOST送信：Array
-(
-    [username] => にゃんこ4
-    [email] => nyanko4@gmail.com
+    [a_title] => aaa
+    [a_date] => 2019/03/01
+    [a_hour] => 3
+    [a_minute] => 0
+    [c_id] => 13
+    [comment] => 
     [MAX_FILE_SIZE] => 3145728
+    [submit] => 実績記載
 )
 
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグFILE送信：Array
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグFILE情報：Array
 (
-    [pic] => Array
+    [pic1] => Array
         (
-            [name] => ラグたん.jpg
-            [type] => image/jpeg
-            [tmp_name] => /Applications/MAMP/tmp/php/phpYDam9E
-            [error] => 0
-            [size] => 15711
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
         )
 
-)
+    [pic2] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
 
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ画像アップロード前
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ画像アップロード処理開始
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグFILE情報Array
-(
-    [name] => ラグたん.jpg
-    [type] => image/jpeg
-    [tmp_name] => /Applications/MAMP/tmp/php/phpYDam9E
-    [error] => 0
-    [size] => 15711
-)
-
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ$file_error:0
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグファイルパスは正常にアップロードされました。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグファイルパスuploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ画像アップロード後uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグ未入力チェックOK
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグバリデーションチェックOK
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグマイページへ移動します。
-[17-Mar-2019 22:54:53 Asia/Tokyo] デバッグif文中msg_success プロフィールを変更しました
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグセッションID：ff6lbuqmg3tkadmt70hd7di84r
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:55:01 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ4
-    [email] => nyanko4@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグセッションID：t349utdajjmnnrhris7pt2otki
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ取得したユーザー情報：Array
-(
-    [id] => 7
-    [username] => にゃんこ4
-    [email] => nyanko4@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
-)
-
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグPOST送信があります
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグPOST送信：Array
-(
-    [username] => にゃんこ4
-    [email] => nyanko3@gmail.com
-    [MAX_FILE_SIZE] => 3145728
-)
-
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグFILE送信：Array
-(
-    [pic] => Array
+    [pic3] => Array
         (
             [name] => 
             [type] => 
@@ -439,80 +644,295 @@
 
 )
 
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ画像アップロード前
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ画像アップロード後uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグ未入力チェックOK
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグバリデーションチェックOK
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:55:07 Asia/Tokyo] デバッグマイページへ移動します。
-[17-Mar-2019 22:55:08 Asia/Tokyo] デバッグif文中msg_success プロフィールを変更しました
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグセッションID：dh04dvedss3u0vqpmirmgj7mui
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:55:29 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ日時：2019-03-01
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ時間：03:00
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ年２：2019
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ月２：03
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ日２：01
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグバリデーションOKです。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ新規登録です。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグSQL:INSERT into performance (title,action_date,action_time,category_id,comment,pic1,pic2,pic3,user_id,create_date) VALUES (:title,:action_date,:action_time,:category_id,:comment,:pic1,:pic2,:pic3,:u_id,:create_date)
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ流し込みデータ：Array
 (
-    [id] => 7
-    [username] => にゃんこ4
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
+    [:title] => aaa
+    [:action_date] => 2019-03-01
+    [:action_time] => 03:00
+    [:category_id] => 13
+    [:comment] => 
+    [:pic1] => 
+    [:pic2] => 
+    [:pic3] => 
+    [:u_id] => 3
+    [:create_date] => 2019-03-21 23:59:00
 )
 
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグセッションID：skkk48aaghhvsps3a31k2edjfc
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:55:33 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグマイページへ遷移します
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ=================
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグマイページ
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ=================
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ============画面表示処理開始
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグセッションID：jsj5bl31qed253139bes96e0f5
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグログイン済みユーザーです。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグログイン有効期限切れです。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグユーザー情報を取得します。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ実績情報を取得します。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグユーザーID：3
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ成功。
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグクエリ：
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグSQL：SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
+        WHERE p.user_id = :u_id AND p.delete_flg = 0 ORDER BY action_date ASC LIMIT 20 OFFSET 0
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ取得したユーザー情報：Array
 (
-    [id] => 7
-    [username] => にゃんこ4
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-    [login_time] => 2019-03-14 01:13:29
+    [id] => 3
+    [username] => にゃんころもっち
+    [email] => nyankoromotti@gmail.com
+    [password] => $2y$10$MKVhuZr49phUtPfuX8Oz8.PvQrF6N2jDHTv3imzI242EfrT645jSu
+    [pic] => uploads/59b6d7ffdfafea474672f3e7b3df264e743fac4f.jpeg
+    [login_time] => 2019-03-18 19:24:24
     [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
+    [create_date] => 2019-03-18 19:24:24
+    [update_date] => 2019-03-18 19:24:24
 )
 
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグプロフィール編集
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ==================
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ============画面表示処理開始
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグセッションID：ltm03jv8qfo1tfej7k4qclg23f
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグログイン済みユーザーです。
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグログイン有効期限切れです。
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグユーザー情報を取得します。
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグクエリ成功。
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグクエリ：
-[17-Mar-2019 22:55:41 Asia/Tokyo] デバッグ取得したユーザー情報：Array
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ取得した実績情報：Array
 (
-    [id] => 7
-    [username] => にゃんこ4
-    [email] => nyanko3@gmail.com
-    [password] => $2y$10$kyuaRSW5/Vs.pLqxEqp2S.EZBwqYgMtiCFKhQZnqR0tfsBH18ajey
-    [pic] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
-    [login_time] => 2019-03-14 01:13:29
-    [delete_flg] => 0
-    [create_date] => 2019-03-14 01:13:29
-    [update_date] => 2019-03-14 01:13:29
+    [total] => 21
+    [total_page] => 2
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [title] => っっっっっf
+                    [action_date] => 2018-10-07
+                    [action_time] => 00:07:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [1] => Array
+                (
+                    [title] => aaaa
+                    [action_date] => 2018-11-06
+                    [action_time] => 00:06:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [2] => Array
+                (
+                    [title] => html
+                    [action_date] => 2018-12-18
+                    [action_time] => 00:50:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ミスタ
+                )
+
+            [3] => Array
+                (
+                    [title] => FW
+                    [action_date] => 2019-01-02
+                    [action_time] => 03:50:00
+                    [pic1] => 
+                    [pic2] => uploads/b5763db4fce53e257b7bba8a3825726476e3e5c4.png
+                    [pic3] => 
+                    [category_name] => トリッシュ
+                )
+
+            [4] => Array
+                (
+                    [title] => aaaaaa
+                    [action_date] => 2019-02-06
+                    [action_time] => 02:29:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => uploads/9c24b15788aff394c00c429e18abe9ea9c555a57.png
+                    [category_name] => ナランチャ
+                )
+
+            [5] => Array
+                (
+                    [title] => ssss
+                    [action_date] => 2019-02-11
+                    [action_time] => 01:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [6] => Array
+                (
+                    [title] => aa
+                    [action_date] => 2019-02-12
+                    [action_time] => 01:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [7] => Array
+                (
+                    [title] => ssss
+                    [action_date] => 2019-02-12
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ミスタ
+                )
+
+            [8] => Array
+                (
+                    [title] => ッッッg
+                    [action_date] => 2019-03-01
+                    [action_time] => 00:06:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [9] => Array
+                (
+                    [title] => ddddd
+                    [action_date] => 2019-03-01
+                    [action_time] => 00:25:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [10] => Array
+                (
+                    [title] => aaa
+                    [action_date] => 2019-03-01
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [11] => Array
+                (
+                    [title] => っっd
+                    [action_date] => 2019-03-04
+                    [action_time] => 02:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [12] => Array
+                (
+                    [title] => js
+                    [action_date] => 2019-03-05
+                    [action_time] => 04:03:00
+                    [pic1] => uploads/3dc8060e28450c216ea14c0f2da620489be74cc4.jpeg
+                    [pic2] => uploads/90980d88c303d3a8abeedcb11b66c7464188ac90.jpeg
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [13] => Array
+                (
+                    [title] => ddd
+                    [action_date] => 2019-03-06
+                    [action_time] => 00:03:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [14] => Array
+                (
+                    [title] => ああああ
+                    [action_date] => 2019-03-06
+                    [action_time] => 19:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [15] => Array
+                (
+                    [title] => ッッッs
+                    [action_date] => 2019-03-06
+                    [action_time] => 03:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [16] => Array
+                (
+                    [title] => っっっf
+                    [action_date] => 2019-03-08
+                    [action_time] => 00:04:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [17] => Array
+                (
+                    [title] => php
+                    [action_date] => 2019-03-12
+                    [action_time] => 02:10:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ジョルノ
+                )
+
+            [18] => Array
+                (
+                    [title] => css
+                    [action_date] => 2019-03-22
+                    [action_time] => 01:40:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+            [19] => Array
+                (
+                    [title] => fff
+                    [action_date] => 2019-03-22
+                    [action_time] => 02:00:00
+                    [pic1] => 
+                    [pic2] => 
+                    [pic3] => 
+                    [category_name] => ブチャラティ
+                )
+
+        )
+
 )
 
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ取得日時：2018-10-07
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ現在時刻：1553180340
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ現在時刻：1538838000
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグ差分：14342340
+[21-Mar-2019 23:59:00 Asia/Tokyo] デバッグif文中msg_success実績を記載しました。

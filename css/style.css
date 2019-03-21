@@ -410,9 +410,14 @@ h2#index-subtitle {
 
 .profile-form > .profile-img-form{
     width:150px;
-    height:150px;
+    min-height:50px;
     margin:10px auto;
     background:#BCB5B5;
+}
+
+.profile-form > .profile-img-form >.profile-img{
+    width:100%;
+    vertical-align: bottom;
 }
 
 .profile-text > p {
@@ -451,10 +456,14 @@ h2#index-subtitle {
 
 .active-img-form{
     width:150px;
-    height:150px;
+    min-height:50px;
     margin:10px;
     background:#BCB5B5;
     float:left;
+}
+.active-img-form > .active-img {
+    width:100%;
+    vertical-align: bottom;
 }
 
 .active-detail{
@@ -493,7 +502,7 @@ h2#index-subtitle {
 }
 
 .active-time{
-    width:60px;
+    width:80px;
     float:left;
     margin-left:20px;
 }
@@ -507,6 +516,8 @@ h2#index-subtitle {
 .active-time > p:last-child{
     font-size:8px;
 }
+
+
 
 .active-category{
     width:120px;
@@ -562,8 +573,86 @@ input[type="text"].a_time-input{
 
 .a_time-parts{
     position:absolute;
-    top:37px;
-    left:60px;
+    top:50px;
+    left:70px;
+    font-size:20px;
+}
+
+.a_time-form> .hour {
+    position: relative;
+}
+
+.a_time-form > .hour > select{
+    margin-top:15px;
+    margin-bottom:20px;
+    padding: 10px;
+    width: 60px;
+    height:60px;
+    border-color: #ccc;
+    border-radius: 0;
+    font-size: 20px;
+    text-align:center;
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.a_time-form > .hour >.icn_select::after {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #333;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 7px solid transparent;
+    content: "";
+}
+
+.a_time-form> .minute {
+    position: absolute;
+    top:24px;
+    left:130px;
+}
+
+.a_time-form > .minute > select{
+    margin-top:15px;
+    margin-bottom:20px;
+    padding: 10px;
+    width: 60px;
+    height:60px;
+    border-color: #ccc;
+    border-radius: 0;
+    font-size: 20px;
+    text-align:center;
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.a_time-form > .minute >.icn_select::after {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: block;
+    width: 0;
+    height: 0;
+    border:none;
+    border-top: 10px solid #333;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 7px solid transparent;
+    content: "";
+}
+
+.a_time-minute-parts{
+    position:absolute;
+    top:50px;
+    left:210px;
     font-size:20px;
 }
 
@@ -627,14 +716,22 @@ input[type="text"].a_time-input{
 /* カテゴリー一覧画面 */
 /* ============== */
 
+.category-section > h1.title{
+    margin-bottom:0;
+}
+
 .category-body > .category-section{
     min-height:590px;
 }
 
 .category-content{
     width:60%;
-    height:530px;
-    margin: 30px auto;
+    height:550px;
+    margin-top:15px;
+    margin-bottom:20px;
+    margin-left:auto;
+    margin-right:auto;
+    /* margin: 30px auto; */
     overflow:hidden;
     /* border:2px solid red; */
 }
@@ -660,7 +757,7 @@ input[type="text"].a_time-input{
 
 .category-delete{
     margin-top:20px;
-    height:210px;
+    height:230px;
 }
 
 .c-title{
@@ -683,6 +780,13 @@ input[type="text"].a_time-input{
     right:20px; */
     border-radius:5px;
     
+}
+
+.category-regist .area-msg{
+    padding:0;
+    color:red;
+    margin-top:16px;
+    margin-bottom:16px;
 }
 
 .category-delete > .selectbox {
@@ -722,6 +826,17 @@ input[type="text"].a_time-input{
     border-radius:5px;
 }
 
+.category-delete > .area-msg{
+    color:red;
+    padding:0;
+    height:24px;
+}
+
+.c-delete-title-valid{
+    margin-top:0;
+    margin-bottom:0;
+}
+
 .category-list{
     width:49%;
     height:530px;
@@ -730,7 +845,7 @@ input[type="text"].a_time-input{
 
 .category-list-area{
     width:350px;
-    height:495px;
+    height:515px;
     padding-top:10px;
     padding-bottom:10px;
     padding-left:20px;
@@ -870,7 +985,9 @@ footer a:hover {
 /* エラー */
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 label.err input ,label.err select,
-textarea.err {
+textarea.err,
+.category-regist > .err,
+.category-delete > .selectbox > .err {
     background:#f7dcd9;
 }
 
@@ -1110,13 +1227,13 @@ input[type="submit"].inactive {
     position:absolute;
     bottom:10px;
     left: 110px;
-    width:40px;
+    width:50px;
 }
 .input-day > .start-month-parts{
     margin:0;
     position:absolute;
     bottom:15px;
-    left:160px;
+    left:170px;
     font-size:20px;
 }
 
@@ -1124,7 +1241,7 @@ input[type="submit"].inactive {
     margin:0;
     position:absolute;
     bottom:10px;
-    left: 230px;
+    left: 240px;
     width:70px;
 }
 
@@ -1132,7 +1249,7 @@ input[type="submit"].inactive {
     margin:0;
     position:absolute;
     bottom:15px;
-    left:310px;
+    left:320px;
     font-size:20px;
     
 }
@@ -1142,13 +1259,13 @@ input[type="submit"].inactive {
     position:absolute;
     bottom:10px;
     left: 350px;
-    width:40px;
+    width:50px;
 }
 .input-day > .end-month-parts{
     margin:0;
     position:absolute;
     bottom:15px;
-    left:400px;
+    left:410px;
     font-size:20px;
 }
 .search-button{
