@@ -20,19 +20,55 @@ $dbFormData = getUser($_SESSION['user_id']);
 // カテゴリーID
 $c_id = (!empty($_GET['c_id'])) ? $_GET['c_id'] : '';
 // ソート順
-$sort = (!empty($_GET['sort'])) ? $_GER['sort'] : '';
+$sort = (!empty($_GET['sort'])) ? $_GET['sort'] : '';
 // 表示件数
 $listSpan = 20;
 // 現在のレコード先頭を産出
 $currentMinNum = (($currentPageNum - 1) * $listSpan);
-
 $startDate = '';
 $endDate = '';
-$dbPerfData = getPerformanceAll($_SESSION['user_id'], $sort, $c_id, $startDate, $endDate, $currentMinNum);
-// $dbTotalData = getTotalTime($_SESSION['user_id']);
+if(!empty($_GET['search'])){
+    if(((int)$_GET['start-year'] === 0 || (int)$_GET['start-month'] === 0 || (int)$_GET['end-year'] === 0 || (int)$_GET['end-month'] === 0) && ((int)$_GET['start-year'] !== 0 || (int)$_GET['start-month'] !== 0 || (int)$_GET['end-year'] !== 0 || (int)$_GET['end-month'] !== 0)){
+    global $$err_msg;
+    $c_id = '';
+    $sort = '';
+    $err_msg['search-day']= MSG18;
+    $err_msg['common'] = MSG19;
+    }else{
+        if((int)$_GET['start-year'] !== 0 && (int)$_GET['start-month'] !== 0 && (int)$_GET['end-year'] !== 0 && (int)$_GET['end-month'] !== 0){
+            $start_month = '';
+        $end_month = '';
+        if((int)$_GET['start-month'] > 0 && (int)$_GET['start-month'] < 10){
+            $start_month = '0'.$_GET['start-month'];
+        }
+        if((int)$_GET['end-month'] > 0 && (int)$_GET['end-month'] < 10){
+            $end_month = '0'.$_GET['end-month'];
+        }
+        $startDate = $_GET['start-year'].'-'.$start_month.'-01';
+        $endDate = $_GET['end-year'].'-'.$end_month.'-01';
+        }
+        
+    }
+}
+
+debug('mypage開始年月：'.$startDate);
+debug('mypage終了年月：'.$endDate);
+
+
+
+$dbPerfData = getPerformanceAll($_SESSION['user_id'], $c_id, $sort, $startDate, $endDate, $currentMinNum);
+$dbPerfData_Prof = getPerfAll($_SESSION['user_id']);
+$dbCategoryData = getCategory($_SESSION['user_id']);
 debug('取得したユーザー情報：' . print_r($dbFormData, true));
 debug('取得した実績情報：' . print_r($dbPerfData, true));
-// debug('取得した累計時間情報：' . print_r($dbTotalData, true));
+debug('取得した実績情報2：' . print_r($dbPerfData_Prof, true));
+
+$sumHourTime = sumHourTime($dbPerfData_Prof);
+$sumMinuteTime = sumMinuteTime($dbPerfData_Prof);
+debug('累計時間：' . $sumHourTime);
+debug('累計時間：' . $sumMinuteTime);
+
+
 
 // プロフィール画像の有無判定
 $userPic = '';
@@ -42,21 +78,9 @@ if (!empty($dbFormData['pic'])) {
     $userPic = 'img/sample-img.png';
 }
 
-$nowDate = strtotime(reset($dbPerfData['data'])['action_date']);
-debug('取得日時：' . print_r(reset($dbPerfData['data'])['action_date'], true));
-debug('現在時刻：' . strtotime(date('H:i:s')));
-debug('現在時刻：' . strtotime(reset($dbPerfData['data'])['action_date']));
+$nowDate = strtotime(reset($dbPerfData_Prof['data'])['action_date']);
 debug('差分：' . (strtotime(date('H:i:s')) - $nowDate));
-// debug('累計時間：' . print_r(timeSum($dbPerfData),true));
 
-// $total_hour = '';
-// $total_minute = '';
-// if ($dbTotalData) {
-//     $total_hour = mb_substr($dbTotalData['total_time'], 0, 2);
-//     $total_minute = mb_substr($dbTotalData['total_time'], 3, 2);
-// }
-
-// 
 ?>
 
 <?php
@@ -64,7 +88,7 @@ $siteTitle = 'マイページ';
 require('head.php');
 ?>
 
-<body>
+<body id="mypage">
     <!-- ヘッダー -->
     <?php
     require('header.php');
@@ -76,6 +100,13 @@ require('head.php');
 
     <!-- メインコンテンツ -->
     <section class="main mypage">
+        <div class="area-msg">
+            <?php
+            if(!empty($err_msg['common'])){
+                echo $err_msg['common'];
+            }
+            ?>
+        </div>
 
         <div id="mycontent">
             <!-- サイドバー -->
@@ -87,14 +118,14 @@ require('head.php');
                     <div class="profile-text">
                         <p><?php echo $dbFormData['username']; ?>さん</p>
                         <?php
-                        if ($dbPerfData) {
+                        if ($dbPerfData['data']) {
                             ?>
 
-                        <p><span><?php echo mb_substr(reset($dbPerfData['data'])['action_date'], 0, 4) . ' 年 ' . mb_substr(reset($dbPerfData['data'])['action_date'], 5, 2) . ' 月 ' . mb_substr(reset($dbPerfData['data'])['action_date'], 8, 2) . ' 日 '; ?></span></p>
+                        <p><span><?php echo mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 0, 4) . ' 年 ' . mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 5, 2) . ' 月 ' . mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 8, 2) . ' 日 '; ?></span></p>
                         <p>より継続開始！！</p>
 
                         <p><?php echo '継続開始より ' . floor((strtotime(date('H:i:s')) - $nowDate) / (60 * 60 * 24)) . ' 日目 '; ?></p>
-                        <!-- <p>累計時間：<span>¥ . ' 時間 ' . mb_substr($dbTotalData['total_time'], 3, 2), ' 分 '; ?></span></p> -->
+                        <p>累計時間：<span><?php echo $sumHourTime . ' 時間 ' . $sumMinuteTime. ' 分 '; ?></span></p>
                         <?php
 
                     } else {
@@ -105,11 +136,13 @@ require('head.php');
                     }
                     ?>
                     </div>
+                    <div class="actualEdit_move_form">
+                        <a href="actualEdit.php" class="actualEdit_move">実績を記載する</a>
+                    </div>
+
+
                 </div>
 
-                <div class="search-form">
-
-                </div>
 
             </div>
 
@@ -133,7 +166,20 @@ require('head.php');
                                             <div class="selectbox">
                                                 <span class="icn_select"></span>
                                                 <select name="c_id" id="">
-                                                    <option value="0">選択してください</option>
+                                                    <option value="0" <?php if (!empty($_GET['c_id']) && $_GET['c_id'] == 0) {
+                                                                            echo 'selected';
+                                                                        } ?>>選択してください</option>
+                                                    <?php
+                                                    foreach ($dbCategoryData as $key => $val) {
+                                                        ?>
+                                                    <option value="<?php echo $val['id'] ?>" <?php if (!empty($_GET['c_id']) && $_GET['c_id'] == $val['id']) {
+                                                                                                    echo 'selected';
+                                                                                                } ?>>
+                                                        <?php echo $val['category_name']; ?>
+                                                    </option>
+                                                    <?php 
+                                                }
+                                                ?>
                                                 </select>
                                             </div>
                                             <p class="search-sort search-input">表示順</p>
@@ -145,16 +191,20 @@ require('head.php');
                                                     <option value="2">古い順</option>
                                                 </select>
                                             </div>
-                                            <p class="search-day search-input">期間&nbsp;&nbsp;<span>※開始年月と終了年月をご指定ください。</span></p>
+                                            <p class="search-day search-input">期間&nbsp;&nbsp;<span class=<?php if(!empty($err_msg['search-day'])) {echo 'area-msg';}?>><?php if(!empty($err_msg['search-day'])){
+                                                echo $err_msg['search-day'];
+                                                }else{
+                                                    echo "※開始年月と終了年月をご指定ください。";
+                                                }?></span></p>
 
                                             <div class="input-day">
-                                                <!-- <input type="text" class="search-field" name="start-year" placeholder=""> -->
+
                                                 <select name="start-year" id="" class="search-field">
-                                                    <option value="0" selected></option>
+                                                    <option value="0" <?php if(empty($_GET['start_year']) || (int)$_GET['start-year'] === 0) echo 'selected';?>></option>
                                                     <?php
                                                     for ($i = 2018; $i < 2031; $i++) {
                                                         ?>
-                                                    <option value="<?php echo $i; ?>">
+                                                    <option value="<?php echo $i; ?>" <?php if(!empty($_GET['start-year']) && (int)$_GET['start-year'] === $i) echo 'selected';?>>
                                                         <?php
                                                         echo $i;
                                                         ?>
@@ -165,13 +215,12 @@ require('head.php');
                                                 ?>
                                                 </select>
                                                 <p class="start-year-parts">年</p>
-                                                <!-- <input type="text" class="search-field start-month" name="start-month" placeholder=""> -->
                                                 <select name="start-month" id="" class="search-field start-month">
-                                                    <option value="0" selected></option>
+                                                    <option value="0" <?php if(empty($_GET['start-month']) || (int)$_GET['start-month'] === 0) echo 'selected';?>></option>
                                                     <?php
                                                     for ($i = 1; $i < 13; $i++) {
                                                         ?>
-                                                    <option value="<?php echo $i; ?>">
+                                                    <option value="<?php echo $i; ?>"<?php if(!empty($_GET['start-month']) && (int)$_GET['start-month'] === $i) echo 'selected';?>>
                                                         <?php
                                                         echo $i;
                                                         ?>
@@ -182,13 +231,12 @@ require('head.php');
                                                 ?>
                                                 </select>
                                                 <p class="start-month-parts">月&nbsp;&nbsp;〜</p>
-                                                <!-- <input type="text" class="search-field end-year" name="end-year" placeholder=""> -->
                                                 <select name="end-year" id="" class="search-field end-year">
-                                                    <option value="0" selected></option>
+                                                    <option value="0" <?php if(empty($_GET['end-year']) || (int)$_GET['end-year'] === 0) echo 'selected';?>></option>
                                                     <?php
                                                     for ($i = 2018; $i < 2031; $i++) {
                                                         ?>
-                                                    <option value="<?php echo $i; ?>">
+                                                    <option value="<?php echo $i; ?>"<?php if(!empty($_GET['end-year']) && (int)$_GET['end-year'] === $i) echo 'selected';?>>
                                                         <?php
                                                         echo $i;
                                                         ?>
@@ -199,13 +247,12 @@ require('head.php');
                                                 ?>
                                                 </select>
                                                 <p class="end-year-parts">年</p>
-                                                <!-- <input type="text" class="search-field end-month" name="end-month" placeholder=""> -->
                                                 <select name="end-month" id="" class="search-field end-month">
-                                                    <option value="0" selected></option>
+                                                    <option value="0" <?php if(empty($_GET['end-month']) || (int)$_GET['end-month'] === 0) echo 'selected';?>></option>
                                                     <?php
                                                     for ($i = 1; $i < 13; $i++) {
                                                         ?>
-                                                    <option value="<?php echo $i; ?>">
+                                                    <option value="<?php echo $i; ?>"<?php if(!empty($_GET['end-month']) && (int)$_GET['end-month'] === $i) echo 'selected';?>>
                                                         <?php
                                                         echo $i;
                                                         ?>
@@ -218,13 +265,7 @@ require('head.php');
                                                 <p class="end-month-parts">月</p>
                                             </div>
 
-
-
-
-                                            <input class="search-button" type="submit" value="検索">
-                                            <!-- <button type="submit" class="search-submit">
-                                                <span class="fa fa-search fa-fw"></span>
-                                            </button> -->
+                                            <input class="search-button" type="submit" name="search" value="検索">
                                         </form>
                                         <!--検索フォーム-->
                                     </div>
@@ -233,7 +274,11 @@ require('head.php');
 
 
                             <div class="kensu">
-                                <span class="total-num"><?php echo sanitize($dbPerfData['total']) . '件のうち '; ?></span>
+                                <span class="total-num"><?php if (!empty($dbPerfData['total'])) {
+                                                            echo sanitize($dbPerfData['total']) . '件のうち ';
+                                                        } else {
+                                                            echo '0 件のうち';
+                                                        }  ?></span>
                                 <span class="num"><?php echo (!empty($dbPerfData['data'])) ? $currentMinNum + 1 : 0; ?></span><span> - </span>
                                 <span><?php echo $currentMinNum + count($dbPerfData['data']); ?></span><span>件表示</span>
                             </div>
@@ -282,8 +327,8 @@ require('head.php');
 
                                 <!-- リンク -->
                                 <div class="active-link">
-                                    <a href="" class="active-link-left">続きを読む</a>
-                                    <a href="" class="active-link-right">編集</a>
+                                    <a href="<?php echo "actualDetail.php?p_id=" . $val['p_id']; ?>" class="active-link-left">続きを読む</a>
+                                    <a href=<?php echo "actualEdit.php?p_id=" . $val['p_id']; ?> class="active-link-right">編集</a>
                                 </div>
                             </div>
                         </div>
@@ -294,13 +339,12 @@ require('head.php');
                     </div>
 
                     <!-- ページネイション -->
-                    <div class="pagination">
-                        <ul class="pagination-list">
-                            <li class="list-item active"><a href="index.php?p=1">1</a></li>
-                            <li class="list-item"><a href="index.php?p=2">2</a></li>
-                            <li class="list-item"><a href="index.php?p =">&gt;</a></li>
-                        </ul>
-                    </div>
+                    <?php if(!empty($_GET['search'])){
+                            pagination($currentPageNum, $dbPerfData['total_page'],$_GET['c_id'], $_GET['sort'], $_GET['start-year'],$_GET['start-month'],$_GET['end-year'],$_GET['end-month'],$_GET['search']);
+                        }else{
+                            pagination($currentPageNum, $dbPerfData['total_page']);
+                         } ?>
+
                 </div>
             </section>
         </div>

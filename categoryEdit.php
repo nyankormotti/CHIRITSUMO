@@ -38,7 +38,7 @@ if (!empty($_POST['sub_reg'])) {
         debug('未入力チェックOK');
 
         // 最大文字数チェック
-        validMaxLen($c_name, 'c_name', 10);
+        validMaxLen($c_name, 'c_name', 13);
 
         if (empty($err_msg['c_name'])) {
             debug('バリデーションOK');
@@ -158,7 +158,7 @@ require('head.php');
                 } else {
                     ?>
                     <p class="c-regist-title-valid">
-                        ※10字以内で入力ください
+                        ※13字以内で入力ください
                     </p>
                     <?php
 

@@ -63,12 +63,16 @@ define('MSG14','文字で入力してください。');
 define('MSG15','正しくありません。');
 define('MSG16',' カテゴリーを選択してください。');
 define('MSG17','そのカテゴリーは使用されています。');
+define('MSG18','※開始年月と終了年月をご指定ください。');
+define('MSG19','検索条件が不正です。');
 define('SUS01', 'パスワードを変更しました。');
 define('SUS02',' プロフィールを変更しました');
 define('SUS03','メールを送信しました。');
 define('SUS04','カテゴリーを登録しました。');
 define('SUS05','カテゴリーを削除しました。');
 define('SUS06','実績を記載しました。');
+define('SUS07',' 実績を編集しました。');
+define('SUS08','実績を削除しました。');
 
 
 // ==========================
@@ -307,32 +311,60 @@ function getPerformance($u_id,$p_id){
     }
 }
 
+function getPerfAll(){
+
+    // 例外処理
+    try{
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT * FROM performance WHERE delete_flg = 0 AND user_id = :u_id ORDER BY action_date ASC';
+        $data = array(':u_id' => $_SESSION['user_id']);
+        
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql, $data);
+        if ($stmt && $stmt->rowCount() > 0) {
+            //クエリ結果のデータを全レコードを格納
+            $rst['data'] = $stmt->fetchAll();
+            return $rst;
+        } else {
+            return false;
+        }
+
+    }catch(Exception $e){
+        error_log('エラー発生：' . $e->getMessage());
+        debug('SQLエラーが発生しました。');
+    }
+}
+
 // ユーザーIDに紐づく全ての実績情報を取得
 function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMinNum = 1 ,$span = 20)
 {
     debug('実績情報を取得します。');
     debug('ユーザーID：' . $u_id);
+    debug('開始年月：'.$startDate);
+    debug('終了年月：'.$endDate);
     // 例外処理
     try {
         // DB接続
         $dbh = dbConnect();
         // SQL文作成
-        $sql = 'SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        $sql = 'SELECT p.id AS p_id,title,action_date,action_time,pic1,pic2,pic3,category_name,c.id AS c_id
         FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
         WHERE p.user_id = :u_id AND p.delete_flg = 0';
-        if(!empty($category)) $sql.=' AND category_id = '. $category;
-        if(!empty($startDate) && !empty($endDate)) $sql.=' AND action_date >= '.$startDate.' AND action_date <= '.$endDate;
+        if(!empty($category)) $sql.=" AND category_id = ". $category;
+        if(!empty($startDate) && !empty($endDate)) $sql.=" AND DATE_FORMAT(action_date,'%Y%m') >= DATE_FORMAT('". $startDate."','%Y%m') AND DATE_FORMAT(action_date,'%Y%m') <= DATE_FORMAT('".$endDate."','%Y%m')";
         if(!empty($sort)) {
             switch($sort){
                   case 1:
-                    $sql .= ' ORDER BY action_date ASC';
+                    $sql .= ' ORDER BY action_date DESC';
                     break;
                 case 2:
-                    $sql .= ' ORDER BY action_date DESC';
+                    $sql .= ' ORDER BY action_date ASC';
                     break;
             }
         } else{
-            $sql .=' ORDER BY action_date ASC';
+            $sql .=' ORDER BY action_date DESC';
         }
         $data = array(':u_id' => $u_id);
         // クエリ実行
@@ -341,24 +373,27 @@ function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMi
         $rst['total_page'] = ceil( $rst['total']/$span);
 
         // ページング用
-        $sql = 'SELECT title,action_date,action_time,pic1,pic2,pic3,category_name 
+        $sql = 'SELECT p.id AS p_id, title,action_date,action_time,pic1,pic2,pic3,category_name,c.id AS c_id
         FROM performance AS p INNER JOIN category AS c ON p.category_id = c.id
         WHERE p.user_id = :u_id AND p.delete_flg = 0';
         if(!empty($category)) $sql.=' AND category_id = '.$category;
-        if(! empty($startDate) && !empty($endDate)) $sql.=' AND action_date >= '. $startDate.' AND action_ d ate <= '.$endDate;
+        if(!empty($startDate) && !empty($endDate)) $sql.=" AND DATE_FORMAT(action_date,'%Y%m') >= DATE_FORMAT('". $startDate."','%Y%m') AND DATE_FORMAT(action_date,'%Y%m') <= DATE_FORMAT('".$endDate."','%Y%m')";
         if(!empty($sort)) {
              switch($sort){
                  case 1:
-                    $sql .= ' ORDER BY action_date ASC';
+                    $sql .= ' ORDER BY action_date DESC';
                     break;
                 case 2:
-                    $sql .= ' ORDER BY action_date DESC';
+                    $sql .= ' ORDER BY action_date ASC';
                     break;
             }
         } else{
-            $sql .=' ORDER BY action_date ASC';
+            $sql .=' ORDER BY action_date DESC';
         }
+        
         $sql .= ' LIMIT '.$span.' OFFSET '.$currentMinNum;
+        
+        
         $data = array(':u_id' => $u_id);
         // クエリ実行
         $stmt = queryPost($dbh, $sql, $data);
@@ -426,6 +461,34 @@ function getPerfCate($c_id){
         }
     }catch (Exception $e){
          error_log('エラー発生：'.$e-> getMessage());
+        debug('SQLエラーが発生しました。');
+    }
+}
+
+// カテゴリーIDに紐づく実績情報の件数を取得
+function getCategoryName($c_id)
+{
+    debug('カテゴリー情報を取得します。');
+    // 例外処理
+    try {
+        // DB接続
+        $dbh = dbConnect();
+        // SQL文作成
+        $sql = 'SELECT category_name FROM category WHERE id = :c_id AND delete_flg = 0';
+        $data = array(':c_id' => $c_id);
+
+        // クエリ実行
+        $stmt = queryPost($dbh, $sql, $data);
+
+        if ($stmt && $stmt->rowCount() > 0) {
+            debug('true');
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            debug('false');
+            return false;
+        }
+    } catch (Exception $e) {
+        error_log('エラー発生：' . $e->getMessage());
         debug('SQLエラーが発生しました。');
     }
 }
@@ -593,6 +656,42 @@ function uploadImg($file,$key){
     }
 }
 
+function sumHourTime($dbPerfData){
+    $total_time = 0;
+    $total_hour = 0;
+    $total_minute = 0;
+    foreach ($dbPerfData['data'] as $key => $val) {
+        $total_hour = $total_hour + (int)mb_substr($val[ 'action_time'],0,2)*3600;
+        $total_minute = $total_minute + (int)mb_substr($val['action_time'],3,2)*60;
+    }
+    $total_time = (int)$total_hour + (int)$total_minute;
+    
+    $total_hour = (int)($total_time/3600);
+    if((int)$total_hour >= 0 && (int)$total_hour < 10){
+        $total_hour = '0'. $total_hour;
+    }
+ 
+    return $total_hour;
+    
+}
+
+function sumMinuteTime($dbPerfData){
+    $total_time = 0;
+    $total_hour = 0;
+    $total_minute = 0;
+    foreach ($dbPerfData['data'] as $key => $val) {
+        $total_hour = $total_hour + (int)mb_substr($val[ 'action_time'],0,2)*3600;
+        $total_minute = $total_minute + (int)mb_substr($val['action_time'],3,2)*60;
+    }
+    $total_time = (int)$total_hour + (int)$total_minute;
+    $total_minute = (int)(($total_time/60)%60);
+    
+    if((int)$total_minute >= 0 && (int)$total_minute < 10){
+        $total_minute = '0'. $total_minute;
+    }
+    return $total_minute;
+}
+
 // 時刻計算(加算)
 function timeSum($dbPerfData)
 {
@@ -614,5 +713,74 @@ function timeSum($dbPerfData)
 //     $add_times = explode(":", $add_time);
 //     return date("H:i:s", mktime($source_times[0] + $add_times[0], $source_times[1] + $add_times[1], $source_times[2] + $add_times[2]));
 // }
+
+// ページング
+function pagination($currentPageNum, $totalPageNum, $c_id = '', $sort = '', $start_year = '',$start_month = '',$end_year = '', $end_month = '', $search = '', $link = '', $pageColNum = 5){
+    // 現在のページが、総ページ数と同じ かつ 総ページ数が表示項目数以上なら、左にリンク4個出す
+    if ($currentPageNum == $totalPageNum && $totalPageNum > $pageColNum) {
+        $minPageNum = $currentPageNum - 4;
+        $maxPageNum = $currentPageNum;
+        // 現在のページが、総ページ数の1ページ前なら、左にリンク３個、右に１個出す
+    } elseif ($currentPageNum == ($totalPageNum - 1) && $totalPageNum > $pageColNum) {
+        $minPageNum =  $currentPageNum - 3;
+        $maxPageNum =  $currentPageNum + 1;
+        // 現ページが2の場合は左にリンク1個、右にリンク3個出す。
+    } elseif ($currentPageNum == 2 && $totalPageNum > $pageColNum) {
+        $minPageNum =  $currentPageNum - 1;
+        $maxPageNum =  $currentPageNum + 3;
+        // 現在のページが１の場合は、左に何も出さない。右に5個出す。
+    } elseif ($currentPageNum == 1 && $totalPageNum > $pageColNum) {
+        $minPageNum =  $currentPageNum;
+        $maxPageNum =  5;
+        // 総ページ数が表示項目より少ない場合は、総ページ数をループのmax、ループのminを1に設定
+    } elseif ($totalPageNum < $pageColNum) {
+        $minPageNum = 1;
+        $maxPageNum = $totalPageNum;
+        // それ以外は左に2個出す。
+    } else {
+        $minPageNum = $currentPageNum - 2;
+        $maxPageNum = $currentPageNum + 2;
+    }
+
+    debug('最大ページ数：'.$maxPageNum);
+    debug('トータルページ数：'.$totalPageNum);
+    debug('リンク：'.$link);
+
+    echo '<div class="pagination">';
+    echo '<ul class="pagination-list">';
+    if(!empty($search)){
+        if ($currentPageNum != 1) {
+        echo '<li class="list-item"><a href="mypage.php?p=1' . $link . '&c_id='.$c_id.'&sort='.$sort.'&start_year='.$start_year.'&start_month='.$start_month.'&end_year='.$end_year.'&end_month='.$end_month.'&search='.$search.'">&lt;</a></li>';
+        }
+            for ($i = $minPageNum; $i <= $maxPageNum; $i++) {
+                echo '<li class="list-item ';
+                if ($currentPageNum == $i) {
+                    echo 'active';
+                }
+                echo '"><a href="mypage.php?p=' . $i . $link . '&c_id='.$c_id.'&sort='.$sort.'&start_year='.$start_year.'&start_month='.$start_month.'&end_year='.$end_year.'&end_month='.$end_month.'&search='.$search.'">' . $i . '</a></li>';
+            }
+        if ($currentPageNum != $maxPageNum && $maxPageNum > 1) {
+            echo '<li class="list-item"><a href="mypage.php?p=' . $totalPageNum . $link . '&c_id='.$c_id.'&sort='.$sort.'&start_year='.$start_year.'&start_month='.$start_month.'&end_year='.$end_year.'&end_month='.$end_month.'&search='.$search.'">&gt;</a></li>';
+        }
+
+    }else{
+        if ($currentPageNum != 1) {
+        echo '<li class="list-item"><a href="mypage.php?p=1' . $link . '">&lt;</a></li>';
+        }
+            for ($i = $minPageNum; $i <= $maxPageNum; $i++) {
+                echo '<li class="list-item ';
+                if ($currentPageNum == $i) {
+                    echo 'active';
+                }
+                echo '"><a href="mypage.php?p=' . $i . $link . '">' . $i . '</a></li>';
+            }
+        if ($currentPageNum != $maxPageNum && $maxPageNum > 1) {
+            echo '<li class="list-item"><a href="mypage.php?p=' . $totalPageNum . $link . '">&gt;</a></li>';
+        }
+
+    }
+    echo '</ul>';
+    echo '</div>';
+}
 
 ?>

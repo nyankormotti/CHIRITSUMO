@@ -152,6 +152,7 @@ input[type="submit"]{
     padding:15px 30px;
     width:100%;
     border:none;
+    border-radius:5px;
     font-size:20px;
     color:white;
     background:#333;
@@ -318,8 +319,18 @@ h2#index-subtitle {
 /* ============= */
 .mypage{
     width:100%;
-    height:670px;
+    min-height:670px;
     overflow:hidden;
+}
+
+.mypage > .area-msg{
+    color:red;
+    width:200px;
+    margin-top:30px;
+    margin-bottom:0;
+    margin-right:auto;
+    margin-left:auto;
+    font-size:20px;
 }
 
 .title-bar {
@@ -425,6 +436,25 @@ h2#index-subtitle {
     margin-bottom:5px;
 }
 
+.actualEdit_move_form{
+    height:40px;
+    margin-top:30px;
+    margin-bottom:10px;
+}
+
+.actualEdit_move_form > .actualEdit_move{
+    padding:10px 15px;
+    border:none;
+    border-radius:5px;
+    color:white;
+    background:#333;
+    
+}
+
+.actualEdit_move_form > a:hover{
+    text-decoration:none;
+}
+
 .active-field{
     width:650px;
     padding:10px 15px;
@@ -458,11 +488,14 @@ h2#index-subtitle {
     width:150px;
     min-height:50px;
     margin:10px;
-    background:#BCB5B5;
+    /* background:#BCB5B5; */
     float:left;
 }
 .active-img-form > .active-img {
-    width:100%;
+    width:auto;
+    max-width:150px;
+    height:auto;
+    max-height:150px;
     vertical-align: bottom;
 }
 
@@ -658,6 +691,7 @@ input[type="text"].a_time-input{
 
 .a_category-form > .selectbox {
     position: relative;
+    overflow:hidden;
 }
 
 .a_category-form > .selectbox > select{
@@ -690,6 +724,29 @@ input[type="text"].a_time-input{
     content: "";
 }
 
+.select_c_button{
+    /* margin-left:30px;
+    margin-right:30px; */
+    position:absolute;
+    top:10px;
+    right:150px;
+    padding:15px 30px;
+    /* width:200px;
+    height:40px;  */
+}
+
+.select_c_button > a{
+    padding:15px 30px;
+    color:white;
+    background:#333;
+    border:none;
+    border-radius:5px;
+}
+
+.select_c_button > a:hover{
+    text-decoration:none;
+}
+
 .imgDrop-container {
     width: 33.3333%;
     float: left;
@@ -711,6 +768,10 @@ input[type="text"].a_time-input{
     top:58px;
     left:20px;
 }
+
+/* #mypage > footer{
+    margin-top:40px;
+} */
 
 /* ============== */
 /* カテゴリー一覧画面 */
@@ -874,6 +935,144 @@ input[type="text"].a_time-input{
     color:white;
     background:#626262;
 }
+/* ============== */
+/* 実績詳細画面 */
+/* ============== */
+.detail-area-top{
+    width:1000px;
+    border:3px solid #f6f5f4;
+    padding:10px 15px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom:30px;
+}
+.detail-area{
+    overflow:hidden;
+}
+
+.detail-area > h2 {
+    font-size:26px;
+}
+
+.detail-table{
+    float:left;
+}
+.detail-table > table{
+    background:#EFEFEF;
+    /* border:2px dotted #333; */
+    padding:5px;
+    border-radius:5px;
+    width:350px;
+    height:200px;
+}
+.detail-table > table > tbody > tr > th,
+.detail-table > table > tbody > tr > td{
+    padding-top:10px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+    border-bottom:1px dotted #333;
+    
+    font-size:16px;
+}
+.detail-table > table > tbody > tr > th{
+    text-align:left;
+    font-size:20px;
+    padding-right:5px;
+}
+
+.detail-comment{
+    width:630px;
+    height:200px;
+    border-radius:5px;
+    padding:10px;
+    float:right;
+    background:#f6f5f4;
+    box-sizing:border-box;
+    
+}
+.detail-comment > p{
+    width:600px;
+    word-break:break-all;
+    overflow:scroll;
+}
+
+.detail-img{
+    width:100%;
+    /* height:40px; */
+    /* background:#f6f5f4; */
+    margin-top:30px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.detail-img > .img-container {
+    width: 33.3333%;
+    min-height:200px;
+    float: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.detail-img > .img-container >  .prev-img{
+    width: 100%;
+    overflow:hidden;
+    
+}
+
+.detail-submit{
+    width:100%;
+    height:100px;
+    margin-bottom:20px;
+}
+
+.detail-submit > .detail-submit-edit{
+    padding:30px;
+    float:right;
+}
+
+
+.detail-submit > .detail-submit-edit > a{
+    display:block;
+    width:40px;
+    height:30px;
+    border:none;
+    background:#333;
+    color:white;
+    padding:15px 30px;
+    font-size:20px;
+}
+
+.detail-submit > .detail-submit-edit > a:hover{
+    text-decoration:none;
+}
+
+/* .detail-submit-delete{
+    border:none;
+    width:100px;
+    float:right;
+} */
+.detail-submit > .detail-submit-delete{
+    padding:30px;
+    float:right;
+}
+.detail-submit > .detail-submit-delete > a{
+    display:block;
+    width:40px;
+    height:30px;
+    border:none;
+    background:#333;
+    color:white;
+    padding:15px 30px;
+    font-size:20px;
+}
+
+.detail-submit > .detail-submit-delete > a:hover{
+    text-decoration:none;
+}
+
+
+
 
 
 /* ============== */
@@ -1211,6 +1410,9 @@ input[type="submit"].inactive {
 
 .search-input-valid{
     font-size:12px;
+}
+.search-day > .area-msg{
+    color:red;
 }
 
 .input-day > .start-year-parts{
