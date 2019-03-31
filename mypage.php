@@ -51,24 +51,13 @@ if(!empty($_GET['search'])){
     }
 }
 
-debug('mypage開始年月：'.$startDate);
-debug('mypage終了年月：'.$endDate);
-
-
 
 $dbPerfData = getPerformanceAll($_SESSION['user_id'], $c_id, $sort, $startDate, $endDate, $currentMinNum);
 $dbPerfData_Prof = getPerfAll($_SESSION['user_id']);
 $dbCategoryData = getCategory($_SESSION['user_id']);
-debug('取得したユーザー情報：' . print_r($dbFormData, true));
-debug('取得した実績情報：' . print_r($dbPerfData, true));
-debug('取得した実績情報2：' . print_r($dbPerfData_Prof, true));
 
 $sumHourTime = sumHourTime($dbPerfData_Prof);
 $sumMinuteTime = sumMinuteTime($dbPerfData_Prof);
-debug('累計時間：' . $sumHourTime);
-debug('累計時間：' . $sumMinuteTime);
-
-
 
 // プロフィール画像の有無判定
 $userPic = '';
@@ -79,7 +68,7 @@ if (!empty($dbFormData['pic'])) {
 }
 
 $nowDate = strtotime(reset($dbPerfData_Prof['data'])['action_date']);
-debug('差分：' . (strtotime(date('H:i:s')) - $nowDate));
+
 
 ?>
 
@@ -124,7 +113,7 @@ require('head.php');
                         <p><span><?php echo mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 0, 4) . ' 年 ' . mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 5, 2) . ' 月 ' . mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 8, 2) . ' 日 '; ?></span></p>
                         <p>より継続開始！！</p>
 
-                        <p><?php echo '継続開始より ' . floor((strtotime(date('H:i:s')) - $nowDate) / (60 * 60 * 24)) . ' 日目 '; ?></p>
+                        <p><?php echo '継続開始より ' . floor((strtotime(date('Y-m-d')) - $nowDate) / (60 * 60 * 24) + 1) . ' 日目 '; ?></p>
                         <p>累計時間：<span><?php echo $sumHourTime . ' 時間 ' . $sumMinuteTime. ' 分 '; ?></span></p>
                         <?php
 
