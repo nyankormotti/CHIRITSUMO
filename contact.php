@@ -3,12 +3,12 @@
 // 共通関数
 require('function.php');
 
-debug('==============');
-debug('お問い合わせページ');
-debug('==============');
-debugLogStart();
+// debug('==============');
+// debug('お問い合わせページ');
+// debug('==============');
+// debugLogStart();
 
-debug('セッション' . print_r($_SESSION, true));
+// debug('セッション' . print_r($_SESSION, true));
 
 // セッションIDがある場合、ログイン認証を実施
 if (!empty($_SESSION['user_id'])) {
@@ -19,12 +19,12 @@ if (!empty($_SESSION['user_id'])) {
 
 // セッションIDの有無で処理を分ける
 if (empty($_SESSION['user_id'])) {
-    debug('セッションIDがない場合の処理を実施します。');
+    // debug('セッションIDがない場合の処理を実施します。');
 
     // post送信されていた場合
     if (!empty($_POST)) {
-        debug('post送信があります。');
-        debug('POST情報：' . print_r($_POST, true));
+        // debug('post送信があります。');
+        // debug('POST情報：' . print_r($_POST, true));
 
         // 変数にPOST情報を代入
         $email = $_POST['email'];
@@ -35,7 +35,7 @@ if (empty($_SESSION['user_id'])) {
         validInput($user_comment, 'comment');
 
         if (empty($err_msg)) {
-            debug('未入力チェックOK');
+            // debug('未入力チェックOK');
 
             // email形式チェック
             validEmail($email, 'email');
@@ -45,14 +45,14 @@ if (empty($_SESSION['user_id'])) {
 
 
             if (empty($err_msg)) {
-                debug('バリデーションOK');
+                // debug('バリデーションOK');
 
                 // 例外処理
                 try {
 
                     // メール送信
                     $from = $email;
-                    $to = 'info@chiritsumo.com';
+                    $to = 'info@chiritsumo.nyankormotti.com';
                     $subject = '【お問い合わせ】| 未ログインユーザーより';
 
                     $comment = <<<EOT
@@ -61,23 +61,23 @@ EOT;
                     sendMail($from, $to, $subject, $comment);
 
                     $_SESSION['msg_success'] = SUS03;
-                    debug('メール送信成功' . print_r($_SESSION, true));
+                    // debug('メール送信成功' . print_r($_SESSION, true));
 
                     header("Location:index.php");
                 } catch (Exception $e) {
                     error_log('エラー発生：' . $e->getMessage());
-                    debug('メール送信が失敗ました。');
+                    // debug('メール送信が失敗ました。');
                     $err_mg['common'] = MSG07;
                 }
             }
         }
     }
 } else {
-    debug('セッションIDがある場合の処理を開始します。');
+    // debug('セッションIDがある場合の処理を開始します。');
     // post送信されていた場合
     if (!empty($_POST)) {
-        debug('post送信があります');
-        debug('POST情報' . print_r($_POST['comment']));
+        // debug('post送信があります');
+        // debug('POST情報' . print_r($_POST['comment']));
 
         // post情報を変数に格納
         $user_id = $_SESSION['user_id'];
@@ -87,13 +87,13 @@ EOT;
         validInput($user_comment, 'comment');
 
         if (empty($err_msg)) {
-            debug('未入力チェックOK');
+            // debug('未入力チェックOK');
 
             // 最大文字数チェック
             validMaxLen($user_comment, 'comment', 200);
 
             if (empty($err_msg)) {
-                debug('バリデーションOK');
+                // debug('バリデーションOK');
 
                 // 例外処理
                 try {
@@ -107,33 +107,33 @@ EOT;
 
                     // クエリ実行結果の値を取得
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                    debug('クエリデータ：' . print_r($result, true));
-                    debug('クエリデータ：' . print_r($result['email'], true));
+                    // debug('クエリデータ：' . print_r($result, true));
+                    // debug('クエリデータ：' . print_r($result['email'], true));
 
                     // EmailがDBに登録されていない場合
                     if ($stmt && $stmt->rowCount() > 0) {
-                        debug('クエリ成功');
-                        debug('データ' . $user_id);
-                        debug('クエリデータ：' . print_r($result['email'], true));
-                        // メール送信
+                        // debug('クエリ成功');
+                        // debug('データ' . $user_id);
+                        // debug('クエリデータ：' . print_r($result['email'], true));
+                        // // メール送信
                         $from = $result['email'];
-                        $to = 'info@chiritsumo.com';
+                        $to = 'info@chiritsumo.nyankormotti.com';
                         $subject = '【お問い合わせ】| ログインユーザーより';
                         $comment = <<<EOT
 {$user_comment}
 EOT;
                         sendMail($from, $to, $subject, $comment);
-                        debug('from：' . print_r($from, true));
-                        debug('to' . print_r($to, true));
-                        debug('subject' . print_r($subject, true));
-                        debug('comment：' . print_r($comment, true));
+                        // debug('from：' . print_r($from, true));
+                        // debug('to' . print_r($to, true));
+                        // debug('subject' . print_r($subject, true));
+                        // debug('comment：' . print_r($comment, true));
 
                         $_SESSION['msg_success'] = SUS03;
-                        debug('メール送信成功' . print_r($_SESSION, true));
+                        // debug('メール送信成功' . print_r($_SESSION, true));
 
                         header("Location:mypage.php");
                     } else {
-                        debug('クエリに失敗したか、DBに登録のないEmailが入力されていました。');
+                        // debug('クエリに失敗したか、DBに登録のないEmailが入力されていました。');
                         $err_msg['common'] = MSG07;
                     }
                 } catch (Exception $e) {
@@ -173,10 +173,10 @@ require('head.php');
                     <?php
                     if (empty($_SESSION['user_id'])) {
                         ?>
-                    <label class="<?php if (!empty($err_msg['email'])) echo 'err'; ?>">
-                        <p class="form-email">メールアドレス<span class="area-msg">&nbsp;&nbsp;&nbsp;&nbsp;<?php if (!empty($err_msg['email'])) echo $err_msg['email']; ?></span></p>
-                        <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
-                    </label>
+                        <label class="<?php if (!empty($err_msg['email'])) echo 'err'; ?>">
+                            <p class="form-email">メールアドレス<span class="area-msg">&nbsp;&nbsp;&nbsp;&nbsp;<?php if (!empty($err_msg['email'])) echo $err_msg['email']; ?></span></p>
+                            <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
+                        </label>
                     <?php
 
                 }
@@ -184,19 +184,19 @@ require('head.php');
 
                     <label class="form-group">
                         <p class="comment">内容<?php if (empty($err_msg['comment'])) { ?>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="help-block">※200文字以内にてご入力ください</span></span>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="help-block">※200文字以内にてご入力ください</span></span>
                             <?php
 
                         } else {
                             ?>
-                            <span>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="area-msg">
-                                    <?php
-                                    echo  $err_msg['comment'];
-                                    ?>
+                                <span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span class="area-msg">
+                                        <?php
+                                        echo  $err_msg['comment'];
+                                        ?>
+                                    </span>
                                 </span>
-                            </span>
                             <?php
 
                         }
@@ -208,7 +208,7 @@ require('head.php');
                     </label>
 
 
-                    <div class="btn-contner">
+                    <div class="btn-contner contact-btn">
                         <input type="submit" name="submit" class="btn btn-mid" value="送信">
                     </div>
                 </div>
@@ -217,8 +217,10 @@ require('head.php');
         </div>
     </section>
 
+    <div class="footer_dummy"></div>
+
 
     <!-- フッター -->
-    <?php 
+    <?php
     require('footer.php');
-    ?> 
+    ?>

@@ -3,17 +3,17 @@
 // 共通関数の読み込み
 require('function.php');
 
-debug('=================');
-debug('パスワード再発行メール送信ページ');
-debug('=================');
-debugLogStart();
+// debug('=================');
+// debug('パスワード再発行メール送信ページ');
+// debug('=================');
+// debugLogStart();
 
 // ログイン認証なし
 
 // post送信されていること
 if (!empty($_POST)) {
-    debug('post送信があります。');
-    debug('POST情報：' . print_r($_POST, true));
+    // debug('post送信があります。');
+    // debug('POST情報：' . print_r($_POST, true));
 
     // 変数にPOST情報を代入
     $email = $_POST['email'];
@@ -22,7 +22,7 @@ if (!empty($_POST)) {
     validInput($email, 'email');
 
     if (empty($err_msg)) {
-        debug('未入力チェックOK');
+        // debug('未入力チェックOK');
 
         // emailの形式チェック
         validEmail($email, 'email');
@@ -30,7 +30,7 @@ if (!empty($_POST)) {
         validMaxLen($email, 'email');
 
         if (empty($err_msg)) {
-            debug('バリデーションOK');
+            // debug('バリデーションOK');
 
             // 例外処理
             try {
@@ -46,47 +46,47 @@ if (!empty($_POST)) {
 
                 // EmailがDBに登録されている場合
                 if ($stmt && array_shift($result)) {
-                    debug('クエリ成功');
+                    // debug('クエリ成功');
                     $_SESSION['msg_success'] = SUS03;
 
                     // 認証キー
                     $auth_key = makeRandkey();
 
                     // メール送信
-                    $from = 'info@ciritsumo.com';
+                    $from = 'info@chiritsumo.nyankormotti.com';
                     $to = $email;
                     $subject = '【パスワード再発行認証】| CHIRITSUMO';
                     $comment = <<<EOT
 本メールアドレス宛にパスワード再発行のご依頼がありました。
 下記URLにて認証キーをご入力いただくとパスワードが再発行されます。
 
-パスワード再発行認証キー入力ページ：http://localhost:8888/CHIRITSUMO/passRemindRecieve.php
+パスワード再発行認証キー入力ページ：http://chiritsumo.nyankormotti.com/passRemindRecieve.php
 認証キー：{$auth_key}
 *認証キーの有効期限は30分となります
 
 認証キーを再発行されたい場合は下記ページより再度再発行をお願いします。
-http://localhost:8888/CHIRITSUMO/passRemindSend.php
+http://chiritsumo.nyankormotti.com/passRemindSend.php
 
 ///////////////////////////////////////////////
 chiritumoカスタマーセンター
-URL  http://localhost:8888/CHIRITSUMO/
-E-mail info@chiritumo.com
+URL  http://chiritsumo.nyankormotti.com
+E-mail info@chiritsumo.nyankormotti.com
 ///////////////////////////////////////////////
 
 EOT;
                     sendMail($from, $to, $subject, $comment);
 
-                    debug('認証キー' . print_r($auth_key));
+                    // debug('認証キー' . print_r($auth_key));
 
                     // 認証に必要な情報をセッションへ保存
                     $_SESSION['auth_key'] = $auth_key;
                     $_SESSION['auth_email'] = $email;
                     $_SESSION['auth_key_limit'] = time() + (60 * 30);
-                    debug('セッションの中身：' . print_r($_SESSION, true));
+                    // debug('セッションの中身：' . print_r($_SESSION, true));
 
                     header("Location:passRemindRecieve.php");
                 } else {
-                    debug('クエリに失敗したかDBに登録のないEmailが入力されました。');
+                    // debug('クエリに失敗したかDBに登録のないEmailが入力されました。');
                     $err_msg['common'] = MSG07;
                 }
             } catch (Exception $e) {
@@ -128,7 +128,7 @@ require('head.php');
 
                 <label class="<?php if (!empty($err_msg['email'])) echo 'err'; ?>">
                     <p class="form-email">メールアドレス</p>
-                    <input type="text" name="email" value="<?php echo getFormData('email'); ?>">
+                    <input type="text" name="email" value="<?php echo getFormData('email'); ?>" style="margin-bottom:0;">
                     <div class="area-msg">
                         <?php
                         if (!empty($err_msg['email'])) echo $err_msg['email'];
@@ -139,7 +139,7 @@ require('head.php');
                 <div class="btn-contner">
                     <input type="submit" name="submit" class="btn btn-mid" value="送信"><br>
                 </div>
-                <a href="index.php">トップページへ戻る</a>
+                <a href="index.php">&gt;&gt;トップページへ戻る</a>
             </form>
         </div>
 
@@ -147,6 +147,6 @@ require('head.php');
     </section>
 
     <!-- フッター -->
-    <?php 
+    <?php
     require('footer.php');
-    ?> 
+    ?>

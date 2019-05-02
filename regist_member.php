@@ -1,22 +1,22 @@
 <?php
- // 共通関数の呼び出し
+// 共通関数の呼び出し
 require('function.php');
 
-debug('===========================');
-debug('会員登録');
-debug('===========================');
-debugLogStart();
+// debug('===========================');
+// debug('会員登録');
+// debug('===========================');
+// debugLogStart();
 
 // post送信がある場合
 if (!empty($_POST)) {
-    debug('ポスト名前：' . print_r($_POST['name']));
-    debug('ポストEmail：' . print_r($_POST['email']));
+    // debug('ポスト名前：' . print_r($_POST['name']));
+    // debug('ポストEmail：' . print_r($_POST['email']));
     // ユーザー情報を変数に格納
     $username = $_POST['name'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $pass_re = $_POST['pass_re'];
-    debug('email:' . $email);
+    // debug('email:' . $email);
 
     // バリデーションチェック
 
@@ -78,12 +78,12 @@ if (!empty($_POST)) {
                         // ユーザーIDを格納
                         $_SESSION['user_id'] = $dbh->lastInsertId();
 
-                        debug('セッション変数の中身：'.print_r($_SESSION,true));
+                        // debug('セッション変数の中身：'.print_r($_SESSION,true));
 
                         header("Location:mypage.php"); //マイページへ 遷移
                     }
-                }   catch (Exceotion  $e){
-                    error_log('エラー 発 生：'.$e->getMessage());
+                } catch (Exceotion  $e) {
+                    error_log('エラー 発 生：' . $e->getMessage());
                     $err_msg['common'] = MSG07;
                 }
             }
@@ -119,7 +119,7 @@ require('head.php');
                 </div>
                 <label class="<?php if ((!empty($err_msg['name']))) echo 'err'; ?>">
                     <p class="form-name">お名前<span>&nbsp;&nbsp;&nbsp;&nbsp;※10文字以内にてご入力ください</span></p>
-                    <input type="text" name="name" value="<?php if (!empty($_POST['name'])) echo $_POST['name']; ?>">
+                    <input type="text" name="name" value="<?php if (!empty($_POST['name'])) echo $_POST['name']; ?>" style="margin-bottom:0;">
                     <div class="area-msg">
                         <?php
                         if (!empty($err_msg['name'])) {
@@ -131,7 +131,7 @@ require('head.php');
 
                 <label class="<?php if (!empty($err_msg['email'])) echo 'err'; ?>">
                     <p class="form-email">メールアドレス<span></span></p>
-                    <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
+                    <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>" style="margin-bottom:0;">
                     <div class="area-msg">
                         <?php
                         if (!empty($err_msg['email'])) {
@@ -143,7 +143,7 @@ require('head.php');
 
                 <label class="<?php if (!empty($err_msg['pass'])) echo 'err'; ?>">
                     <p class="form-password">パスワード<span>&nbsp;&nbsp;&nbsp;&nbsp;※半角英数字6字以上にてご入力ください</span></p>
-                    <input type="password" name="pass">
+                    <input type="password" name="pass" style="margin-bottom:0;">
                     <div class="area-msg">
                         <?php
                         if (!empty($err_msg['pass'])) {
@@ -155,7 +155,7 @@ require('head.php');
 
                 <label class="<?php if (!empty($err_msg['pass_re'])) echo 'err'; ?>">
                     <p class="form-password">パスワード(再入力)<span></span></p>
-                    <input type="password" name="pass_re">
+                    <input type="password" name="pass_re" style="margin-bottom:0;">
                     <div class="area-msg">
                         <?php
                         if (!empty($err_msg['pass_re'])) {
@@ -166,13 +166,15 @@ require('head.php');
                 </label>
 
 
-                <div class="btn-contner">
+                <div class="btn-contner reg-men-btn">
                     <input type="submit" name="submit" class="btn btn-mid" value="登録"><br>
                 </div>
             </form>
         </div>
     </section>
- 
+
+    <div class="footer_dummy"></div>
+
     <!-- フッター  -->
     <?php
     require('footer.php');

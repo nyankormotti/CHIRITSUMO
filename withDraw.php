@@ -2,10 +2,10 @@
  // 共通関数の読み込み
 require('function.php');
 
-debug('=======================');
-debug('退会ページ');
-debug('=======================');
-debugLogStart();
+// debug('=======================');
+// debug('退会ページ');
+// debug('=======================');
+// debugLogStart();
 
 // ログイン認証
 require('auth.php');
@@ -16,7 +16,7 @@ require('auth.php');
 
 // post送信されていた場合
 if (!empty($_POST)) {
-    debug('POST送信があります。');
+    // debug('POST送信があります。');
 
     // 例外処理
     try {
@@ -37,11 +37,11 @@ if (!empty($_POST)) {
         if ($stmt1) {
             // セッションを削除
             session_destroy();
-            debug('セッション変数の中身：' . print_r($_SESSION, true));
-            debug('トップページへ遷移します。');
+            // debug('セッション変数の中身：' . print_r($_SESSION, true));
+            // debug('トップページへ遷移します。');
             header("Location:index.php");
         } else {
-            debug('クエリが失敗した。');
+            // debug('クエリが失敗した。');
             $err_msg['common'] = MSG07;
         }
     } catch (Exception $e) {
@@ -50,7 +50,7 @@ if (!empty($_POST)) {
     }
 }
 
-debug('画面表示処理終了============');
+// debug('画面表示処理終了============');
 
 ?>
 

@@ -1,15 +1,15 @@
 <?php
- // 共通関数の読み込み
+// 共通関数の読み込み
 require('function.php');
 
-debug('====================');
-debug('パスワード再発行認証キー入力ページ');
-debug('====================');
-debugLogStart();
+// debug('====================');
+// debug('パスワード再発行認証キー入力ページ');
+// debug('====================');
+// debugLogStart();
 
 // SESSIONに認証キーがあるか確認、無ければリダイレクト
 if (empty($_SESSION['auth_key'])) {
-    debug('認証キーがありません。');
+    // debug('認証キーがありません。');
     header("Location:passRemindSend.php"); //認証キー送信ページ
 }
 
@@ -23,7 +23,7 @@ if (!empty($_POST)) {
     validInput($auth_key, 'token');
 
     if (empty($err_msg)) {
-        debug('未処理分OK。');
+        // debug('未処理分OK。');
 
         // 固定長チェック
         validLength($auth_key, 'token');
@@ -31,7 +31,7 @@ if (!empty($_POST)) {
         validHalf($auth_key, 'token');
 
         if (empty($err_msg)) {
-            debug('バリデーションOK');
+            // debug('バリデーションOK');
 
             // postとsessionの認証キーの同値チェック
             if ($auth_key !== $_SESSION['auth_key']) {
@@ -44,11 +44,11 @@ if (!empty($_POST)) {
             }
 
             if (empty($err_msg)) {
-                debug('認証OK。');
+                // debug('認証OK。');
                 // パスワード生成
                 $pass = makeRandKey();
 
-                debug('パスワード：'.$pass);
+                // debug('パスワード：' . $pass);
 
                 // 例外処理
                 try {
@@ -61,24 +61,24 @@ if (!empty($_POST)) {
                     $stmt = queryPost($dbh, $sql, $data);
                     // クエリ成功
                     if ($stmt) {
-                        debug('クエリ成功');
+                        // debug('クエリ成功');
 
                         // メール送信
-                        $from = 'info@ciritsumo.com';
+                        $from = 'info@chiritsumo.nyankormotti.com';
                         $to = $_SESSION['auth_email'];
                         $subject = '【パスワード再発行完了】 | CHIRITSUMO';
                         $comment = <<<EOT
 本メールアドレス宛にパスワードの再発行をいたしました。
 下記のURLにて再発行パスワードをご入力頂き、ログインください。
 
-ログインページ：http://localhost:8888/CHIRITSUMO/login.php
+ログインページ：http://chiritsumo.nyankormotti.com/login.php
 再発行パスワード：{$pass}
 *ログイン後、パスワードのご変更をお願いいたします。
 
 ///////////////////////////////////////////////
 chiritumoカスタマーセンター
-URL  http://localhost:8888/CHIRITSUMO/
-E-mail info@chiritumo.com
+URL  http://chiritsumo.nyankormotti.com
+E-mail info@chiritsumo.nyankormotti.com
 ///////////////////////////////////////////////
 
 EOT;
@@ -86,11 +86,11 @@ EOT;
                         // セッション削除
                         session_unset();
                         $_SESSION['msg_success'] = SUS03;
-                        debug('セッションの中身：' . print_r($_SESSION, true));
+                        // debug('セッションの中身：' . print_r($_SESSION, true));
 
                         header("Location:login.php");
                     } else {
-                        debug('クエリに失敗しました。');
+                        // debug('クエリに失敗しました。');
                         $err_msg['common'] = MSG07;
                     }
                 } catch (Exception $e) {
@@ -146,10 +146,10 @@ require('head.php');
 
                 <label class="<?php if (!empty($err_msg['token'])) echo 'err'; ?>">
                     <p class="form-auth_key">認証キー</p>
-                    <input type="text" name="token" value="<?php echo getFormData('token'); ?>">
+                    <input type="text" name="token" value="<?php echo getFormData('token'); ?>" style="margin-bottom:0;">
                     <div class="area-msg">
                         <?php
-                        if(!empty($err_msg['token'])) echo $err_msg['token'];
+                        if (!empty($err_msg['token'])) echo $err_msg['token'];
                         ?>
                     </div>
                 </label>
@@ -157,7 +157,7 @@ require('head.php');
                 <div class="btn-contner">
                     <input type="submit" name="submit" class="btn btn-mid" value="送信"><br>
                 </div>
-                <a href="passRemindSend.php">パスワード再発行メールを再度送付する</a>
+                <a href="passRemindSend.php">&gt;&gt;パスワード再発行メールを再度送付する</a>
             </form>
         </div>
 
@@ -166,4 +166,4 @@ require('head.php');
     <!-- フッター -->
     <?php
     require('footer.php');
-    ?> 
+    ?>

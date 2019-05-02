@@ -2,10 +2,10 @@
  // 共通関数の読み込み
 require('function.php');
 
-debug('==================');
-debug('プロフィール編集');
-debug('==================');
-debugLogStart();
+// debug('==================');
+// debug('プロフィール編集');
+// debug('==================');
+// debugLogStart();
 
 // ログイン認証
 require('auth.php');
@@ -15,29 +15,29 @@ require('auth.php');
 // =================
 // DBからユーザー情報を取得
 $dbFormData = getUser($_SESSION['user_id']);
-debug('取得したユーザー情報：' . print_r($dbFormData, true));
+// debug('取得したユーザー情報：' . print_r($dbFormData, true));
 
 // post送信された場合
 if (!empty($_POST)) {
-    debug('POST送信があります');
-    debug('POST送信：' . print_r($_POST, true));
-    debug('FILE送信：' . print_r($_FILES, true));
+    // debug('POST送信があります');
+    // debug('POST送信：' . print_r($_POST, true));
+    // debug('FILE送信：' . print_r($_FILES, true));
 
     // 変数にユーザー情報を代入
     $username = $_POST['username'];
     $email = $_POST['email'];
-    debug('画像アップロード前');
+    // debug('画像アップロード前');
     // 画像をアップロードし、パスを格納
     $pic = (!empty($_FILES['pic']['name'])) ? uploadImg($_FILES['pic'], 'pic') : '';
     $pic = (empty($pic) && !empty($dbFormData['pic'])) ? $dbFormData['pic'] : $pic;
-    debug('画像アップロード後' . $pic);
+    // debug('画像アップロード後' . $pic);
 
     // 未入力チェック
     validInput($username, 'username');
     validInput($email, 'email');
 
     if (empty($err_msg)) {
-        debug('未入力チェックOK');
+        // debug('未入力チェックOK');
 
         if ($dbFormData['username'] !== $username) {
             // 名前の最大文字数チェック
@@ -56,7 +56,7 @@ if (!empty($_POST)) {
 
 
         if (empty($err_msg)) {
-            debug('バリデーションチェックOK');
+            // debug('バリデーションチェックOK');
 
             // 例外処理
             try {
@@ -71,7 +71,7 @@ if (!empty($_POST)) {
                 // クエリ成功
                 if ($stmt) {
                     $_SESSION['msg_success'] = SUS02;
-                    debug('マイページへ移動します。');
+                    // debug('マイページへ移動します。');
                     header("Location:mypage.php");
                 }
             } catch (Exception $e) {
@@ -149,6 +149,7 @@ require('head.php');
         </section>
     </section>
 
+    <div class="footer_dummy"></div>
 
 
     <!-- フッター -->

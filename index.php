@@ -1,11 +1,14 @@
 <?php
- // 共通関数呼び出し
+// 共通関数呼び出し
 require('function.php');
 
-debug('=========================');
-debug('トップページ');
-debug('=========================');
-debugLogStart();
+// debug('=========================');
+// debug('トップページ');
+// debug('=========================');
+// debugLogStart();
+// ログイン認証
+require('authIndex.php');
+
 ?>
 
 
@@ -34,4 +37,4 @@ require('head.php');
     <!-- フッター -->
     <?php
     require('footer.php');
-    ?> 
+    ?>

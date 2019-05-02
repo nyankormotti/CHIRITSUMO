@@ -1,11 +1,11 @@
 <?php
- // 共通関数の読み込み
+// 共通関数の読み込み
 require('function.php');
 
-debug('=================');
-debug('パスワード変更ページ');
-debug('=================');
-debugLogStart();
+// debug('=================');
+// debug('パスワード変更ページ');
+// debug('=================');
+// debugLogStart();
 
 // ログイン認証
 require('auth.php');
@@ -16,12 +16,12 @@ require('auth.php');
 
 // DBからユーザーデータを取得
 $userData = getUser($_SESSION['user_id']);
-debug('取得したユーザー情報：' . print_r($userData, true));
+// debug('取得したユーザー情報：' . print_r($userData, true));
 
 // post送信されていた場合
 if (!empty($_POST)) {
-    debug('POST送信があります。');
-    debug('POST送信：' . print_r($_POST, true));
+    // debug('POST送信があります。');
+    // debug('POST送信：' . print_r($_POST, true));
 
     // 変数にユーザー情報を代入
     $pass_old = $_POST['old_pass'];
@@ -34,7 +34,7 @@ if (!empty($_POST)) {
     validInput($pass_new_re, 'new_pass_re');
 
     if (empty($err_msg)) {
-        debug('未入力チェックOK');
+        // debug('未入力チェックOK');
 
         // 古いパスワードチェック
         validPass($pass_old, 'old_pass');
@@ -52,7 +52,7 @@ if (!empty($_POST)) {
         validMatch($pass_new, $pass_new_re, 'new_pass_re');
 
         if (empty($err_msg)) {
-            debug('バリエーションOK。');
+            // debug('バリエーションOK。');
 
             // 例外処理
             try {
@@ -69,9 +69,9 @@ if (!empty($_POST)) {
 
                     // メールを送信
                     $username = $userData['username'];
-                    $from = 'info@ciritsumo.com';
+                    $from = 'info@chiritsumo.nyankormotti.com';
                     $to = $userData['email'];
-                    $subject = 'パスワード変更通知 | CHIRITSUMO';
+                    $subject = '【パスワード変更通知】 | CHIRITSUMO';
 
                     $comment = <<<EOT
 {$username} さん
@@ -79,8 +79,8 @@ if (!empty($_POST)) {
 
 ///////////////////////////////////////////////
 chiritumoカスタマーセンター
-URL  http://localhost:8888/CHIRITSUMO/
-E-mail info@chiritumo.com
+URL  http://chiritsumo.nyankormotti.com
+E-mail info@chiritsumo.nyankormotti.com
 ///////////////////////////////////////////////
 EOT;
                     sendMail($from, $to, $subject, $comment);
@@ -167,4 +167,4 @@ require('head.php');
     <!-- フッター -->
     <?php
     require('footer.php');
-    ?> 
+    ?>

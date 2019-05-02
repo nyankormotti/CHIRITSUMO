@@ -1,11 +1,11 @@
 <?php
- // 共通関数の読み込み
+// 共通関数の読み込み
 require('function.php');
 
-debug('=====================');
-debug('実績記載ページ');
-debug('=====================');
-debugLogStart();
+// debug('=====================');
+// debug('実績記載ページ');
+// debug('=====================');
+// debugLogStart();
 
 // ログイン認証
 require('auth.php');
@@ -21,24 +21,24 @@ $dbCategoryData = getCategory($_SESSION['user_id']);
 // 新規登録画面か編集画面かの判別用フラグ
 $edit_flg = (empty($dbFormData)) ? false : true;
 // 実績記載が初回であるかを判別するフラグ
-debug('実績ID：' . $p_id);
-debug('フォーム用データ：' . print_r($dbFormData, true));
-debug('コメント：' . print_r(getFormData('comment', true), true));
+// debug('実績ID：' . $p_id);
+// debug('フォーム用データ：' . print_r($dbFormData, true));
+// debug('コメント：' . print_r(getFormData('comment', true), true));
 
 
 // パラメータ改ざんチェック
 // =============================
 // GETパラメータはあるが、改ざんされている場合に、正しい実績データが取れないため、マイページへ遷移させる。
 if (!empty($p_id) && empty($dbFormData)) {
-    debug('GETパラメータの実績IDが違います。マイページへ遷移します。');
+    // debug('GETパラメータの実績IDが違います。マイページへ遷移します。');
     header("Location:mypage.php");
 }
 
 // POST送信処理開始
 if (!empty($_POST)) {
-    debug('POST送信があります。');
-    debug('POST情報：' . print_r($_POST, true));
-    debug('FILE情報：' . print_r($_FILES, true));
+    // debug('POST送信があります。');
+    // debug('POST情報：' . print_r($_POST, true));
+    // debug('FILE情報：' . print_r($_FILES, true));
 
     // 変数にユーザー情報を代入
     $a_title = $_POST['a_title'];
@@ -53,8 +53,8 @@ if (!empty($_POST)) {
     }
     $a_time = $a_hour . ':' . $a_minute;
 
-    debug('日時：' . $a_date);
-    debug('時間：' . $a_time);
+    // debug('日時：' . $a_date);
+    // debug('時間：' . $a_time);
     $c_id = $_POST['c_id'];
     $a_comment = $_POST['comment'];
     // 画像をアップロードし、パスを格納
@@ -77,7 +77,7 @@ if (!empty($_POST)) {
         validDate($a_date, 'a_date');
         // カテゴリー未選択チェック
         if ((int)$c_id ===  0) {
-            debug('カテゴリー未選択');
+            // debug('カテゴリー未選択');
             global $err_msg;
             $err_msg['c_id'] = MSG16;
         }
@@ -101,7 +101,7 @@ if (!empty($_POST)) {
         //     validInput($a_time, 'a_time');
         // }
         if ((int)$dbFormData['category_id'] !== (int)$c_id && (int)$c_id ===  0) {
-            debug('カテゴリー未選択');
+            // debug('カテゴリー未選択');
             global $err_msg;
             $err_msg['c_id'] = MSG16;
         }
@@ -113,7 +113,7 @@ if (!empty($_POST)) {
 
 
     if (empty($err_msg)) {
-        debug('バリデーションOKです。');
+        // debug('バリデーションOKです。');
 
         // 例外処理
         try {
@@ -122,16 +122,16 @@ if (!empty($_POST)) {
             // SQL文作成
             // 編集画面の場合はUPDATE文、記載画面の場合はINSERT文
             if ($edit_flg) {
-                debug('DB更新です。');
+                // debug('DB更新です。');
                 $sql = 'UPDATE performance SET title = :title, action_date = :action_date, action_time = :action_time, category_id = :c_id, comment = :comment, pic1 = :pic1, pic2 = :pic2, pic3 = :pic3 WHERE user_id = :u_id AND id = :p_id';
                 $data = array(':title' => $a_title, ':action_date' => $a_date, ':action_time' => $a_time, ':c_id' => $c_id, ':comment' => $a_comment, ':pic1' => $pic1, ':pic2' => $pic2, ':pic3' => $pic3, ':u_id' => $_SESSION['user_id'], ':p_id' => $p_id);
             } else {
-                debug('新規登録です。');
+                // debug('新規登録です。');
                 $sql = 'INSERT into performance (title,action_date,action_time,category_id,comment,pic1,pic2,pic3,user_id,create_date) VALUES (:title,:action_date,:action_time,:category_id,:comment,:pic1,:pic2,:pic3,:u_id,:create_date)';
                 $data = array(':title' => $a_title, ':action_date' => $a_date, ':action_time' => $a_time, ':category_id' => $c_id, ':comment' => $a_comment, ':pic1' => $pic1, ':pic2' => $pic2, ':pic3' => $pic3, ':u_id' => $_SESSION['user_id'], ':create_date' => date('Y-m-d H:i:s'));
             }
-            debug('SQL:' . $sql);
-            debug('流し込みデータ：' . print_r($data, true));
+            // debug('SQL:' . $sql);
+            // debug('流し込みデータ：' . print_r($data, true));
 
             // クエリ実行
             $stmt1 = queryPost($dbh, $sql, $data);
@@ -146,7 +146,7 @@ if (!empty($_POST)) {
                 }
 
 
-                debug('マイページへ遷移します');
+                // debug('マイページへ遷移します');
                 header("Location:mypage.php");
             }
         } catch (Exception $e) {
@@ -225,9 +225,9 @@ require('head.php');
                         <?php
                         for ($i = 0; $i < 25; $i++) {
                             ?>
-                        <option value="<?php echo $i; ?>" <?php if ($edit_flg && mb_substr(getFormData('action_time', true), 0, 2) == $i || !empty($_POST['a_hour']) && $_POST['a_hour'] == $i) {
-                                                                echo 'selected';
-                                                            } ?>><?php echo $i; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if ($edit_flg && mb_substr(getFormData('action_time', true), 0, 2) == $i || !empty($_POST['a_hour']) && $_POST['a_hour'] == $i) {
+                                                                    echo 'selected';
+                                                                } ?>><?php echo $i; ?></option>
                         <?php
 
                     }
@@ -241,9 +241,9 @@ require('head.php');
                         <?php
                         for ($i = 0; $i < 60; $i++) {
                             ?>
-                        <option value="<?php echo $i; ?>" <?php if ($edit_flg && mb_substr(getFormData('action_time', true), 3, 2) == $i || !empty($_POST['a_minute']) && $_POST['a_minute'] == $i) {
-                                                                echo 'selected';
-                                                            } ?>><?php echo $i; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if ($edit_flg && mb_substr(getFormData('action_time', true), 3, 2) == $i || !empty($_POST['a_minute']) && $_POST['a_minute'] == $i) {
+                                                                    echo 'selected';
+                                                                } ?>><?php echo $i; ?></option>
                         <?php
 
                     }
@@ -269,12 +269,12 @@ require('head.php');
                         <?php
                         foreach ($dbCategoryData as $key => $val) {
                             ?>
-                        <option value="<?php echo $val['id'] ?>" <?php if ($edit_flg && getFormData('category_id', true) == $val['id'] || !empty($_POST['c_id']) && $_POST['c_id'] == $val['id']) {
-                                                                        echo 'selected';
-                                                                    } ?>>
-                            <?php echo $val['category_name']; ?>
-                        </option>
-                        <?php 
+                            <option value="<?php echo $val['id'] ?>" <?php if ($edit_flg && getFormData('category_id', true) == $val['id'] || !empty($_POST['c_id']) && $_POST['c_id'] == $val['id']) {
+                                                                            echo 'selected';
+                                                                        } ?>>
+                                <?php echo $val['category_name']; ?>
+                            </option>
+                        <?php
                     }
                     ?>
                     </select>
@@ -359,9 +359,9 @@ require('head.php');
         </form>
     </section>
 
-
+    <div class="footer_dummy"></div>
 
     <!-- フッター -->
-    <?php 
+    <?php
     require('footer.php');
-    ?> 
+    ?>

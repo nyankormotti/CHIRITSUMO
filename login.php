@@ -1,11 +1,11 @@
 <?php
- // 共通関数を読み込み
+// 共通関数を読み込み
 require('function.php');
 
-debug('===========================');
-debug('ログイン');
-debug('===========================');
-debugLogStart();
+// debug('===========================');
+// debug('ログイン');
+// debug('===========================');
+// debugLogStart();
 
 // ログイン認証
 require('auth.php');
@@ -15,7 +15,7 @@ require('auth.php');
 // =================
 // post送信されていた場合
 if (!empty($_POST)) {
-    debug('POST送信があります。');
+    // debug('POST送信があります。');
 
     // 変数にユーザー情報を代入
     $email = $_POST['email'];
@@ -39,7 +39,7 @@ if (!empty($_POST)) {
         validMinLen($pass, 'pass');
 
         if (empty($err_msg)) {
-            debug('バリデーションOKです。');
+            // debug('バリデーションOKです。');
 
             // 例外処理
             try {
@@ -55,10 +55,10 @@ if (!empty($_POST)) {
                 // クエリ結果の値の取得
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                debug('クエリ結果の中身：' . print_r($result, true));
+                // debug('クエリ結果の中身：' . print_r($result, true));
                 // パスワード称号
                 if (!empty($result) && password_verify($pass, array_shift($result))) {
-                    debug('パスワードがマッチしました。');
+                    // debug('パスワードがマッチしました。');
 
                     // ログイン情報の有効期限(デフォルトを1時間とする)
                     $sesLimit = 60 * 60;
@@ -66,22 +66,22 @@ if (!empty($_POST)) {
                     $_SESSION['login_date'] = time();
                     // ログイン保持にチェックがある場合
                     if ($pass_save) {
-                        debug('ログイン保持にチェック');
+                        // debug('ログイン保持にチェック');
                         // ログイン有効期限を30日にしてセット
                         $_SESSION['login_limit'] = $sesLimit * 24 * 30;
                     } else {
-                        debug('ログイン保持にチェックはありません。');
+                        // debug('ログイン保持にチェックはありません。');
                         // 次回からログイン保持したいので、ログイン有効期限を1時間にセット
                         $_SESSION['login_limit'] = $sesLimit;
                     }
                     // ユーザーIDを格納
                     $_SESSION['user_id'] = $result['id'];
 
-                    debug('セッション変数の中身：' . print_r($_SESSION, true));
-                    debug('マイページへ遷移します');
+                    // debug('セッション変数の中身：' . print_r($_SESSION, true));
+                    // debug('マイページへ遷移します');
                     header("Location:mypage.php");
                 } else {
-                    debug('パスワードがアンマッチです。');
+                    // debug('パスワードがアンマッチです。');
                     $err_msg['common'] = MSG09;
                 }
             } catch (Exception $e) {
@@ -91,7 +91,7 @@ if (!empty($_POST)) {
         }
     }
 }
-debug('画面表示終了===================');
+// debug('画面表示終了===================');
 ?>
 
 <?php
@@ -120,38 +120,40 @@ require('head.php');
                 </div>
                 <label class="<?php if (!empty($err_msg['email'])) echo 'err'; ?>">
                     <p class="form-email">メールアドレス<span></span></p>
-                    <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
-                    <div class="area-msg">
-                        <?php
-                        if (!empty($err_msg['email'])) echo $err_msg['email'];
-                        ?>
-                    </div>
-                </label>
-                <label class="<?php if (!empty($err_msg['pass'])) echo 'err'; ?>">
-                    <p class="form-password">パスワード</p>
-                    <input type="password" name="pass" value=""><br>
-                    <div class="area-msg">
-                        <?php
-                        if (!empty($err_msg['pass'])) echo $err_msg['pass'];
-                        ?>
-                    </div>
-                </label>
-                <label>
-                    <input type="checkbox" name="pass_save">
-                    次回から自動的にログインする<br>
-                </label>
+                    <input type="text" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>" style="margin-bottom:0;">
+                    <div class=" area-msg">
+                    <?php
+                    if (!empty($err_msg['email'])) echo $err_msg['email'];
+                    ?>
+        </div>
+        </label>
+        <label class="<?php if (!empty($err_msg['pass'])) echo 'err'; ?>">
+            <p class="form-password">パスワード</p>
+            <input type="password" name="pass" value="" style="margin-bottom:0;">
+            <div class="area-msg">
+                <?php
+                if (!empty($err_msg['pass'])) echo $err_msg['pass'];
+                ?>
+            </div>
+        </label>
+        <label class="pass_save">
+            <input type="checkbox" name="pass_save">
+            次回から自動的にログインする<br>
+        </label>
 
-                <div class="btn-contner">
-                    <input type="submit" name="submit" class="btn btn-mid" value="ログイン"><br>
-                </div>
+        <div class="login-btn-contner">
+            <input type="submit" name="submit" class="btn-mid login-btn" value="ログイン"><br>
+        </div>
 
-                <a href="passRemindSend.php">パスワードをお忘れの方</a>
-            </form>
+        <p class="login-pass">パスワードをお忘れの方は<a class="forget_pass" href="passRemindSend.php">コチラ</a></p>
+        </form>
         </div>
 
     </section>
 
+    <div class="footer_dummy"></div>
+
     <!-- フッター -->
     <?php
     require('footer.php');
-    ?> 
+    ?>
