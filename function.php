@@ -783,4 +783,19 @@ function pagination($currentPageNum, $totalPageNum, $c_id = '', $sort = '', $sta
     echo '</div>';
 }
 
+// GETパラメータの付与
+// $del_key：付与から取り除くきたいGETパラメータのキー
+function appendGetParam($del_key = array()){
+    if(!empty($_GET)){
+        $str = '?';
+        foreach($_GET as $key => $val) {
+            if(!in_array($key, $del_key,true)){
+                $str .=$key.'='.$val.'&';
+            }
+        }
+        $str = mb_substr($str, 0, -1, "UTF-8");
+        return $str;
+    }
+}
+
 ?>

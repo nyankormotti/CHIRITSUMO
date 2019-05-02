@@ -23,7 +23,7 @@ $c_id = (!empty($_GET['c_id'])) ? $_GET['c_id'] : '';
 $sort = (!empty($_GET['sort'])) ? $_GET['sort'] : '';
 // 表示件数
 $listSpan = 20;
-// 現在のレコード先頭を産出
+// 現在のレコード先頭を算出
 $currentMinNum = (($currentPageNum - 1) * $listSpan);
 $startDate = '';
 $endDate = '';
@@ -182,10 +182,10 @@ require('head.php');
                                             <p class="search-day search-input">期間&nbsp;&nbsp;<span class=<?php if (!empty($err_msg['search-day'])) {
                                                                                                                 echo 'area-msg';
                                                                                                             } ?>><?php if (!empty($err_msg['search-day'])) {
-                                                                                                                                                                            echo $err_msg['search-day'];
-                                                                                                                                                                        } else {
-                                                                                                                                                                            echo "※開始年月と終了年月をご指定ください。";
-                                                                                                                                                                        } ?></span></p>
+                                                                                                                        echo $err_msg['search-day'];
+                                                                                                                    } else {
+                                                                                                                        echo "※開始年月と終了年月をご指定ください。";
+                                                                                                                    } ?></span></p>
 
                                             <div class="input-day">
 
@@ -317,7 +317,7 @@ require('head.php');
 
                                     <!-- リンク -->
                                     <div class="active-link">
-                                        <a href="<?php echo "actualDetail.php?p_id=" . $val['p_id']; ?>" class="active-link-left">続きを読む</a>
+                                        <a href="actualDetail.php<?php echo(!empty(appendGetParam())) ? appendGetParam().'&p_id='.$val['p_id'] :"?p_id=" . $val['p_id']; ?>" class="active-link-left">続きを読む</a>
                                         <a href=<?php echo "actualEdit.php?p_id=" . $val['p_id']; ?> class="active-link-right">編集</a>
                                     </div>
                                 </div>

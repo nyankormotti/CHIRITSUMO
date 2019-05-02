@@ -1,5 +1,5 @@
 <?php
- // 共通関数
+// 共通関数
 require('function.php');
 
 // debug('====================');
@@ -38,12 +38,12 @@ if (!empty($_GET['d_id'])) {
 
         // クエリ成功の場合
         if ($stmt) {
-            $_SESSION['msg_success'] =SUS08;
+            $_SESSION['msg_success'] = SUS08;
             // debug('マイページに遷移します');
             header("Location:mypage.php");
         }
-     }catch(Exception $e){
-        error_log ('エラー発生：'.$e->getMessage());
+    } catch (Exception $e) {
+        error_log('エラー発生：' . $e->getMessage());
         $err_msg['common'] = MSG07;
     }
 }
@@ -117,14 +117,18 @@ require('head.php');
                 </div>
             </div>
 
+
             <div class="detail-submit">
+
+                <a href="mypage.php<?php echo appendGetParam(array('p_id'));?>" class="myapage_return">&lt;&lt; マイページに戻る</a>
+
 
                 <!-- <form action="" method="post" class="detail-submit-delete">
                     <input type="submit" name="delete" value="削除">
                 </form> -->
 
                 <div class="detail-submit-delete">
-                    <a href=<?php echo "actualDetail.php?p_id=" . $dbFormData['id']."&d_id=1"; ?>>削除</a>
+                    <a href=<?php echo "actualDetail.php?p_id=" . $dbFormData['id'] . "&d_id=1"; ?>>削除</a>
                 </div>
 
                 <div class="detail-submit-edit">

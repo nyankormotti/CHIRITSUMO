@@ -9,7 +9,7 @@ header {
     width:100%;
     height:70px;
     background:#333;
-    position:fixed; 
+    position:fixed;
     top:0px;
     z-index:5;
 }
@@ -122,7 +122,6 @@ form{
     border:5px solid #f1f1f1;
     margin-left:auto;
     margin-right:auto;
-    
     /* overflow:hidden; */
 }
 
@@ -1139,6 +1138,14 @@ label.pass_save{
 
 .detail-submit > .detail-submit-delete > a:hover{
     text-decoration:none;
+}
+
+a.myapage_return{
+    position:relative;
+    top:40px;
+    left:40px;
+    font-size:20px;
+    font-weight:bold;
 }
 
 
