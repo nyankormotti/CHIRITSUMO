@@ -1385,3 +1385,8 @@ event-streamの虚弱性により4ヶ月前の最新バージョンではevent-s
 [02-May-2019 22:13:16 Asia/Tokyo] PHP Notice:  Undefined index: start-month in /Applications/MAMP/htdocs/CHIRITSUMO/mypage.php on line 333
 [02-May-2019 22:13:16 Asia/Tokyo] PHP Notice:  Undefined index: end-year in /Applications/MAMP/htdocs/CHIRITSUMO/mypage.php on line 333
 [02-May-2019 22:13:16 Asia/Tokyo] PHP Notice:  Undefined index: end-month in /Applications/MAMP/htdocs/CHIRITSUMO/mypage.php on line 333
+[04-May-2019 17:43:55 Asia/Tokyo] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 663
+[04-May-2019 17:43:55 Asia/Tokyo] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/CHIRITSUMO/function.php on line 682
+[04-May-2019 17:43:55 Asia/Tokyo] PHP Warning:  reset() expects parameter 1 to be array, null given in /Applications/MAMP/htdocs/CHIRITSUMO/mypage.php on line 69
+[04-May-2019 17:43:55 Asia/Tokyo] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /Applications/MAMP/htdocs/CHIRITSUMO/mypage.php on line 273
+[04-May-2019 17:43:55 Asia/Tokyo] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/CHIRITSUMO/mypage.php on line 282

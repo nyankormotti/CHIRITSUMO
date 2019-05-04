@@ -95,37 +95,41 @@ require('head.php');
 
             <div class="detail-img">
                 <div class="img-container">
-                    <img src="<?php if (!empty($dbFormData['pic1'])) {
-                                    echo $dbFormData['pic1'];
-                                } else {
-                                    echo "img/sample-img.png";
-                                } ?>" alt="" class="prev-img" style="">
+                    <?php if (!empty($dbFormData['pic1'])) { ?>
+                        <a href="<?php echo $dbFormData['pic1']; ?>" class="light-img" data-lightbox="lightbox" data-title="実績画像1">
+                            <img src="<?php echo $dbFormData['pic1']; ?>" alt="" class="prev-img" style="">
+                            <div class="imgCover imgCover--pic"><i class="fa fa-search" aria-hidden="true"></i></div>
+                        </a>
+                    <?php } else { ?>
+                        <img src="<?php echo "img/sample-img.png"; ?>" alt="" class="prev-img" style="">
+                    <?php } ?>
                 </div>
                 <div class="img-container">
-                    <img src="<?php if (!empty($dbFormData['pic2'])) {
-                                    echo $dbFormData['pic2'];
-                                } else {
-                                    echo "img/sample-img.png";
-                                } ?>" alt="" class="prev-img" style="">
+                    <?php if (!empty($dbFormData['pic2'])) { ?>
+                        <a href="<?php echo $dbFormData['pic2']; ?>" data-lightbox="lightbox" data-title="実績画像2">
+                            <img src="<?php echo $dbFormData['pic2']; ?>" alt="" class="prev-img" style="">
+                            <div class="imgCover imgCover--pic"><i class="fa fa-search" aria-hidden="true"></i></div>
+                        </a>
+                    <?php } else { ?>
+                        <img src="<?php echo "img/sample-img.png"; ?>" alt="" class="prev-img" style="">
+                    <?php } ?>
                 </div>
                 <div class="img-container">
-                    <img src="<?php if (!empty($dbFormData['pic3'])) {
-                                    echo $dbFormData['pic3'];
-                                } else {
-                                    echo "img/sample-img.png";
-                                } ?>" alt="" class="prev-img" style="">
+                    <?php if (!empty($dbFormData['pic3'])) { ?>
+                        <a href="<?php echo $dbFormData['pic3']; ?>" data-lightbox="lightbox" data-title="実績画像3">
+                            <img src="<?php echo $dbFormData['pic3']; ?>" alt="" class="prev-img" style="">
+                            <div class="imgCover imgCover--pic"><i class="fa fa-search" aria-hidden="true"></i></div>
+                        </a>
+                    <?php } else { ?>
+                        <img src="<?php echo "img/sample-img.png"; ?>" alt="" class="prev-img" style="">
+                    <?php } ?>
                 </div>
             </div>
 
 
             <div class="detail-submit">
 
-                <a href="mypage.php<?php echo appendGetParam(array('p_id'));?>" class="myapage_return">&lt;&lt; マイページに戻る</a>
-
-
-                <!-- <form action="" method="post" class="detail-submit-delete">
-                    <input type="submit" name="delete" value="削除">
-                </form> -->
+                <a href="mypage.php<?php echo appendGetParam(array('p_id')); ?>" class="myapage_return">&lt;&lt; マイページに戻る</a>
 
                 <div class="detail-submit-delete">
                     <a href=<?php echo "actualDetail.php?p_id=" . $dbFormData['id'] . "&d_id=1"; ?>>削除</a>
