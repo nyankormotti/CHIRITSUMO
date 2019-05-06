@@ -106,7 +106,7 @@ require('head.php');
                     <div class="profile-text">
                         <p><?php echo $dbFormData['username']; ?>さん</p>
                         <?php
-                        if ($dbPerfData['data']) {
+                        if ($dbPerfData['data'] && !empty($dbCategoryData)) {
                             ?>
 
                             <p><span><?php echo mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 0, 4) . ' 年 ' . mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 5, 2) . ' 月 ' . mb_substr(reset($dbPerfData_Prof['data'])['action_date'], 8, 2) . ' 日 '; ?></span></p>
@@ -116,6 +116,10 @@ require('head.php');
                             <p>累計時間：<span><?php echo $sumHourTime . ' 時間 ' . $sumMinuteTime . ' 分 '; ?></span></p>
                         <?php
 
+                    } elseif (empty($dbCategoryData)) {
+                        ?>
+                            <p>カテゴリーを登録しましょう！！</p>
+                        <?php
                     } else {
                         ?>
                             <p>実績を記録しましょう！！</p>
@@ -125,7 +129,16 @@ require('head.php');
                     ?>
                     </div>
                     <div class="actualEdit_move_form">
-                        <a href="actualEdit.php" class="actualEdit_move">実績を記載する</a>
+                        <?php if (empty($dbCategoryData)) {
+                            ?>
+                            <a href="categoryEdit.php" class="actualEdit_move">カテゴリー登録</a>
+                        <?php
+                    } else {
+                        ?>
+                            <a href="actualEdit.php" class="actualEdit_move">実績を記載する</a>
+                        <?php
+                    }
+                    ?>
                     </div>
 
 
@@ -317,7 +330,7 @@ require('head.php');
 
                                     <!-- リンク -->
                                     <div class="active-link">
-                                        <a href="actualDetail.php<?php echo(!empty(appendGetParam())) ? appendGetParam().'&p_id='.$val['p_id'] :"?p_id=" . $val['p_id']; ?>" class="active-link-left">続きを読む</a>
+                                        <a href="actualDetail.php<?php echo (!empty(appendGetParam())) ? appendGetParam() . '&p_id=' . $val['p_id'] : "?p_id=" . $val['p_id']; ?>" class="active-link-left">続きを読む</a>
                                         <a href=<?php echo "actualEdit.php?p_id=" . $val['p_id']; ?> class="active-link-right">編集</a>
                                     </div>
                                 </div>
