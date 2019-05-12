@@ -14,7 +14,6 @@ require('auth.php');
 // 画面処理
 // =================
 $categoryData = getCategory($_SESSION['user_id']);
-// debug('カテゴリーデータ：' . print_r('$categoryData', true));
 
 // カテゴリー編集フラグ
 $c_edit_flg = 0;
@@ -24,9 +23,6 @@ $user_id = $_SESSION['user_id'];
 
 // 登録ボタンが押された場合
 if (!empty($_POST['sub_reg'])) {
-    // debug('POST送信があります。');
-    // debug('カテゴリーを登録します。');
-    // debug('POST送信：' . print_r('$_POST', true));
 
     // 変数にユーザー情報を代入
     $c_name = $_POST['c_name'];
@@ -35,13 +31,11 @@ if (!empty($_POST['sub_reg'])) {
     validInput($c_name,  'c_name');
 
     if (empty($err_msg['c_name'])) {
-        // debug('未入力チェックOK');
 
         // 最大文字数チェック
         validMaxLen($c_name, 'c_name', 13);
 
         if (empty($err_msg['c_name'])) {
-            // debug('バリデーションOK');
 
             // 例外処理
             try {
@@ -58,7 +52,6 @@ if (!empty($_POST['sub_reg'])) {
                 if ($stmt) {
                     $c_edit_flg = 1;
                     $_SESSION['category_success'] = SUS04;
-                    // debug('カテゴリー編集ページへ遷移します。');
                     header("Location:categoryEdit.php");
                 }
             } catch (Exception $e) {
@@ -70,13 +63,9 @@ if (!empty($_POST['sub_reg'])) {
 }
 // 削除ボタンが押された場合
 elseif (!empty($_POST['sub_del'])) {
-    // debug('POST送信があります。');
-    // debug('カテゴリーを削除します。');
-    // debug('POST送信：' . print_r('$_POST', true));
 
     // 変数にユーザー情報を代入
     $c_id = $_POST['c_id'];
-    // debug('削除：' . $c_id);
     $performData = getPerfCate($c_id);
 
     if ((int)$c_id ===  0) {
@@ -88,8 +77,6 @@ elseif (!empty($_POST['sub_del'])) {
     }
 
     if (empty($err_msg)) {
-        // debug('バリデーションOK');
-
 
         // 例外処理
         try {
@@ -104,7 +91,6 @@ elseif (!empty($_POST['sub_del'])) {
             if ($stmt) {
                 $c_edit_flg = 1;
                 $_SESSION['category_success'] = SUS05;
-                // debug('カテゴリー編集ページへ遷移します。');
                 header("Location:categoryEdit.php");
             }
         } catch (Exception $e) {

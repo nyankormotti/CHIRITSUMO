@@ -13,7 +13,6 @@ require('function.php');
 $p_id = (!empty($_GET['p_id'])) ? $_GET['p_id'] : '';
 // DBから実績データを取得
 $dbFormData = getPerformance($_SESSION['user_id'], $p_id);
-// debug('実績データ：' . print_r($dbFormData, true));
 
 // パラメータに不正な値が入っているかチェック
 if (empty($dbFormData)) {
@@ -21,10 +20,8 @@ if (empty($dbFormData)) {
     header("Location:mypage.php");
 }
 $dbCategoryData = getCategoryName($dbFormData['category_id']);
-// debug('カテゴリーデータ：' . print_r($dbCategoryData, true));
 
 if (!empty($_GET['d_id'])) {
-    // debug('削除');
 
     // 例外処理
     try {
@@ -39,7 +36,7 @@ if (!empty($_GET['d_id'])) {
         // クエリ成功の場合
         if ($stmt) {
             $_SESSION['msg_success'] = SUS08;
-            // debug('マイページに遷移します');
+            // マイページへ繊維
             header("Location:mypage.php");
         }
     } catch (Exception $e) {

@@ -8,8 +8,6 @@ require('function.php');
 // debug('==============');
 // debugLogStart();
 
-// debug('セッション' . print_r($_SESSION, true));
-
 // セッションIDがある場合、ログイン認証を実施
 if (!empty($_SESSION['user_id'])) {
     require('auth.php');
@@ -19,12 +17,9 @@ if (!empty($_SESSION['user_id'])) {
 
 // セッションIDの有無で処理を分ける
 if (empty($_SESSION['user_id'])) {
-    // debug('セッションIDがない場合の処理を実施します。');
 
     // post送信されていた場合
     if (!empty($_POST)) {
-        // debug('post送信があります。');
-        // debug('POST情報：' . print_r($_POST, true));
 
         // 変数にPOST情報を代入
         $email = $_POST['email'];
@@ -35,7 +30,6 @@ if (empty($_SESSION['user_id'])) {
         validInput($user_comment, 'comment');
 
         if (empty($err_msg)) {
-            // debug('未入力チェックOK');
 
             // email形式チェック
             validEmail($email, 'email');
@@ -45,7 +39,6 @@ if (empty($_SESSION['user_id'])) {
 
 
             if (empty($err_msg)) {
-                // debug('バリデーションOK');
 
                 // 例外処理
                 try {
@@ -61,23 +54,18 @@ EOT;
                     sendMail($from, $to, $subject, $comment);
 
                     $_SESSION['msg_success'] = SUS03;
-                    // debug('メール送信成功' . print_r($_SESSION, true));
 
                     header("Location:index.php");
                 } catch (Exception $e) {
                     error_log('エラー発生：' . $e->getMessage());
-                    // debug('メール送信が失敗ました。');
                     $err_mg['common'] = MSG07;
                 }
             }
         }
     }
 } else {
-    // debug('セッションIDがある場合の処理を開始します。');
     // post送信されていた場合
     if (!empty($_POST)) {
-        // debug('post送信があります');
-        // debug('POST情報' . print_r($_POST['comment']));
 
         // post情報を変数に格納
         $user_id = $_SESSION['user_id'];
@@ -87,13 +75,11 @@ EOT;
         validInput($user_comment, 'comment');
 
         if (empty($err_msg)) {
-            // debug('未入力チェックOK');
 
             // 最大文字数チェック
             validMaxLen($user_comment, 'comment', 200);
 
             if (empty($err_msg)) {
-                // debug('バリデーションOK');
 
                 // 例外処理
                 try {
@@ -107,15 +93,10 @@ EOT;
 
                     // クエリ実行結果の値を取得
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                    // debug('クエリデータ：' . print_r($result, true));
-                    // debug('クエリデータ：' . print_r($result['email'], true));
 
                     // EmailがDBに登録されていない場合
                     if ($stmt && $stmt->rowCount() > 0) {
-                        // debug('クエリ成功');
-                        // debug('データ' . $user_id);
-                        // debug('クエリデータ：' . print_r($result['email'], true));
-                        // // メール送信
+                        // メール送信
                         $from = $result['email'];
                         $to = 'info@chiritsumo.nyankormotti.com';
                         $subject = '【お問い合わせ】| ログインユーザーより';
@@ -123,17 +104,11 @@ EOT;
 {$user_comment}
 EOT;
                         sendMail($from, $to, $subject, $comment);
-                        // debug('from：' . print_r($from, true));
-                        // debug('to' . print_r($to, true));
-                        // debug('subject' . print_r($subject, true));
-                        // debug('comment：' . print_r($comment, true));
 
                         $_SESSION['msg_success'] = SUS03;
-                        // debug('メール送信成功' . print_r($_SESSION, true));
 
                         header("Location:mypage.php");
                     } else {
-                        // debug('クエリに失敗したか、DBに登録のないEmailが入力されていました。');
                         $err_msg['common'] = MSG07;
                     }
                 } catch (Exception $e) {

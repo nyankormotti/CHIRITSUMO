@@ -9,7 +9,6 @@ require('function.php');
 
 // SESSIONに認証キーがあるか確認、無ければリダイレクト
 if (empty($_SESSION['auth_key'])) {
-    // debug('認証キーがありません。');
     header("Location:passRemindSend.php"); //認証キー送信ページ
 }
 
@@ -23,7 +22,6 @@ if (!empty($_POST)) {
     validInput($auth_key, 'token');
 
     if (empty($err_msg)) {
-        // debug('未処理分OK。');
 
         // 固定長チェック
         validLength($auth_key, 'token');
@@ -31,7 +29,6 @@ if (!empty($_POST)) {
         validHalf($auth_key, 'token');
 
         if (empty($err_msg)) {
-            // debug('バリデーションOK');
 
             // postとsessionの認証キーの同値チェック
             if ($auth_key !== $_SESSION['auth_key']) {
@@ -44,11 +41,8 @@ if (!empty($_POST)) {
             }
 
             if (empty($err_msg)) {
-                // debug('認証OK。');
                 // パスワード生成
                 $pass = makeRandKey();
-
-                // debug('パスワード：' . $pass);
 
                 // 例外処理
                 try {
@@ -61,7 +55,6 @@ if (!empty($_POST)) {
                     $stmt = queryPost($dbh, $sql, $data);
                     // クエリ成功
                     if ($stmt) {
-                        // debug('クエリ成功');
 
                         // メール送信
                         $from = 'info@chiritsumo.nyankormotti.com';
@@ -86,11 +79,9 @@ EOT;
                         // セッション削除
                         session_unset();
                         $_SESSION['msg_success'] = SUS03;
-                        // debug('セッションの中身：' . print_r($_SESSION, true));
 
                         header("Location:login.php");
                     } else {
-                        // debug('クエリに失敗しました。');
                         $err_msg['common'] = MSG07;
                     }
                 } catch (Exception $e) {

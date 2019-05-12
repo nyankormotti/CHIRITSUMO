@@ -12,8 +12,6 @@ require('function.php');
 
 // post送信されていること
 if (!empty($_POST)) {
-    // debug('post送信があります。');
-    // debug('POST情報：' . print_r($_POST, true));
 
     // 変数にPOST情報を代入
     $email = $_POST['email'];
@@ -22,7 +20,6 @@ if (!empty($_POST)) {
     validInput($email, 'email');
 
     if (empty($err_msg)) {
-        // debug('未入力チェックOK');
 
         // emailの形式チェック
         validEmail($email, 'email');
@@ -30,7 +27,6 @@ if (!empty($_POST)) {
         validMaxLen($email, 'email');
 
         if (empty($err_msg)) {
-            // debug('バリデーションOK');
 
             // 例外処理
             try {
@@ -46,7 +42,6 @@ if (!empty($_POST)) {
 
                 // EmailがDBに登録されている場合
                 if ($stmt && array_shift($result)) {
-                    // debug('クエリ成功');
                     $_SESSION['msg_success'] = SUS03;
 
                     // 認証キー
@@ -76,17 +71,13 @@ E-mail info@chiritsumo.nyankormotti.com
 EOT;
                     sendMail($from, $to, $subject, $comment);
 
-                    // debug('認証キー' . print_r($auth_key));
-
                     // 認証に必要な情報をセッションへ保存
                     $_SESSION['auth_key'] = $auth_key;
                     $_SESSION['auth_email'] = $email;
                     $_SESSION['auth_key_limit'] = time() + (60 * 30);
-                    // debug('セッションの中身：' . print_r($_SESSION, true));
 
                     header("Location:passRemindRecieve.php");
                 } else {
-                    // debug('クエリに失敗したかDBに登録のないEmailが入力されました。');
                     $err_msg['common'] = MSG07;
                 }
             } catch (Exception $e) {

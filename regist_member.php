@@ -9,17 +9,11 @@ require('function.php');
 
 // post送信がある場合
 if (!empty($_POST)) {
-    // debug('ポスト名前：' . print_r($_POST['name']));
-    // debug('ポストEmail：' . print_r($_POST['email']));
     // ユーザー情報を変数に格納
     $username = $_POST['name'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $pass_re = $_POST['pass_re'];
-    // debug('email:' . $email);
-
-    // バリデーションチェック
-
 
     // 未入力チェック
     validInput($username, 'name');
@@ -28,6 +22,8 @@ if (!empty($_POST)) {
     validInput($pass_re, 'pass_re');
 
     if (empty($err_msg)) {
+        // バリデーションチェック
+
         // 名前のバリデーション
         // 名前の最大文字数チェック
         validMaxLen($username, 'name', 10);
@@ -76,11 +72,11 @@ if (!empty($_POST)) {
                         $_SESSION['login_date'] = time();
                         $_SESSION['login_limit'] = $sesLimit;
                         // ユーザーIDを格納
+                        // 直近にINSERTされたIDをセッションに格納
                         $_SESSION['user_id'] = $dbh->lastInsertId();
 
-                        // debug('セッション変数の中身：'.print_r($_SESSION,true));
-
-                        header("Location:mypage.php"); //マイページへ 遷移
+                        // マイページへ繊維
+                        header("Location:mypage.php"); 
                     }
                 } catch (Exceotion  $e) {
                     error_log('エラー 発 生：' . $e->getMessage());

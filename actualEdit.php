@@ -20,25 +20,17 @@ $dbFormData = (!empty($p_id)) ? getPerformance($_SESSION['user_id'], $p_id) : ''
 $dbCategoryData = getCategory($_SESSION['user_id']);
 // 新規登録画面か編集画面かの判別用フラグ
 $edit_flg = (empty($dbFormData)) ? false : true;
-// 実績記載が初回であるかを判別するフラグ
-// debug('実績ID：' . $p_id);
-// debug('フォーム用データ：' . print_r($dbFormData, true));
-// debug('コメント：' . print_r(getFormData('comment', true), true));
-
 
 // パラメータ改ざんチェック
 // =============================
 // GETパラメータはあるが、改ざんされている場合に、正しい実績データが取れないため、マイページへ遷移させる。
 if (!empty($p_id) && empty($dbFormData)) {
-    // debug('GETパラメータの実績IDが違います。マイページへ遷移します。');
+    // マイページへ遷移
     header("Location:mypage.php");
 }
 
 // POST送信処理開始
 if (!empty($_POST)) {
-    // debug('POST送信があります。');
-    // debug('POST情報：' . print_r($_POST, true));
-    // debug('FILE情報：' . print_r($_FILES, true));
 
     // 変数にユーザー情報を代入
     $a_title = $_POST['a_title'];
@@ -52,9 +44,6 @@ if (!empty($_POST)) {
         $a_minute = '0' . $a_minute;
     }
     $a_time = $a_hour . ':' . $a_minute;
-
-    // debug('日時：' . $a_date);
-    // debug('時間：' . $a_time);
     $c_id = $_POST['c_id'];
     $a_comment = $_POST['comment'];
     // 画像をアップロードし、パスを格納
@@ -77,12 +66,11 @@ if (!empty($_POST)) {
         validDate($a_date, 'a_date');
         // カテゴリー未選択チェック
         if ((int)$c_id ===  0) {
-            // debug('カテゴリー未選択');
             global $err_msg;
             $err_msg['c_id'] = MSG16;
         }
         // コメント最大文字数チェック
-        validMaxLen($a_comment, 'comment', 200);
+        validMaxLen($a_comment, 'comment', 230);
     } else {
         if ($dbFormData['title'] !== $a_title) {
             // 未入力チェック
@@ -96,24 +84,19 @@ if (!empty($_POST)) {
             // 年月日の形式チェック
             validDate($a_date, 'a_date');
         }
-        // if ($dbFormData['a_time'] !== $a_time) {
-        //     // 未入力チェック
-        //     validInput($a_time, 'a_time');
-        // }
+        // カテゴリー未選択チェック
         if ((int)$dbFormData['category_id'] !== (int)$c_id && (int)$c_id ===  0) {
-            // debug('カテゴリー未選択');
             global $err_msg;
             $err_msg['c_id'] = MSG16;
         }
         if ($dbFormData['comment'] !== $a_comment) {
             // コメント最大文字数チェック
-            validMaxLen($a_comment, 'comment', 200);
+            validMaxLen($a_comment, 'comment', 230);
         }
     }
 
 
     if (empty($err_msg)) {
-        // debug('バリデーションOKです。');
 
         // 例外処理
         try {
@@ -122,31 +105,26 @@ if (!empty($_POST)) {
             // SQL文作成
             // 編集画面の場合はUPDATE文、記載画面の場合はINSERT文
             if ($edit_flg) {
-                // debug('DB更新です。');
                 $sql = 'UPDATE performance SET title = :title, action_date = :action_date, action_time = :action_time, category_id = :c_id, comment = :comment, pic1 = :pic1, pic2 = :pic2, pic3 = :pic3 WHERE user_id = :u_id AND id = :p_id';
                 $data = array(':title' => $a_title, ':action_date' => $a_date, ':action_time' => $a_time, ':c_id' => $c_id, ':comment' => $a_comment, ':pic1' => $pic1, ':pic2' => $pic2, ':pic3' => $pic3, ':u_id' => $_SESSION['user_id'], ':p_id' => $p_id);
             } else {
-                // debug('新規登録です。');
                 $sql = 'INSERT into performance (title,action_date,action_time,category_id,comment,pic1,pic2,pic3,user_id,create_date) VALUES (:title,:action_date,:action_time,:category_id,:comment,:pic1,:pic2,:pic3,:u_id,:create_date)';
                 $data = array(':title' => $a_title, ':action_date' => $a_date, ':action_time' => $a_time, ':category_id' => $c_id, ':comment' => $a_comment, ':pic1' => $pic1, ':pic2' => $pic2, ':pic3' => $pic3, ':u_id' => $_SESSION['user_id'], ':create_date' => date('Y-m-d H:i:s'));
             }
-            // debug('SQL:' . $sql);
-            // debug('流し込みデータ：' . print_r($data, true));
 
             // クエリ実行
             $stmt1 = queryPost($dbh, $sql, $data);
-            // $stmt2 = queryPost($dbh, $sql2, $data2);
 
             // クエリ成功の場合
             if ($stmt1) {
                 if ($edit_flg) {
+                    // 実績編集の場合
                     $_SESSION['msg_success'] = SUS07;
                 } else {
+                    // 実績記載の場合
                     $_SESSION['msg_success'] = SUS06;
                 }
-
-
-                // debug('マイページへ遷移します');
+                // マイページへ繊維
                 header("Location:mypage.php");
             }
         } catch (Exception $e) {

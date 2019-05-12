@@ -4,15 +4,14 @@ $(function(){
     const MSG_CONTACT_COUNT_ERR = '200文字以内で入力してください。';
     const MSG_CONTACT_COUNT = '※200文字以内にてご入力ください';
 
-    // headerを固定
-    // var $htr = $('header');
-    // $htr.attr({ 'style': 'position:fixed; top:0px;z-index:5;'});
-
     // メッセージ表示
     var $jsShowMsg = $('#js-show-msg');
     var msg = $jsShowMsg.text();
+    // 半角・全角スペース・タブなどを取り除いて、文字列長が0ではない場合
     if(msg.replace(/^[\s ]+|[\s ]+$/g,"").length) {
+        // 要素を表示する
         $jsShowMsg.slideToggle('slow');
+        // 5病後に要素を非表示にする
         setTimeout(function () { $jsShowMsg.slideToggle('slow'); }, 5000);
     }
 
@@ -50,7 +49,9 @@ $(function(){
     var $dropArea = $('.area-drop');
     var $fileInput = $('.input-file');
     $dropArea.on('dragover', function (e) {
+        // 親要素への伝播をキャンセル
         e.stopPropagation();
+        // 要素のイベントをキャンセル
         e.preventDefault();
         $(this).css('border', '3px #ccc dashed');
     });
@@ -62,14 +63,17 @@ $(function(){
     $fileInput.on('change', function (e) {
         $dropArea.css('border', 'none');
         var file = this.files[0],
+            // 兄弟要素を取得
             $img = $(this).siblings('.prev-img'),
+            // ファイルを読み込む
             fileReader = new FileReader();
 
+        // 読み込みが完了した際のイベントハンドラ
         fileReader.onload = function (event) {
-
+            // 読み込んだデータをimgに設定
             $img.attr('src', event.target.result).show();
         };
-
+        // 画像ファイルをDataURLに変換（画像を文字列に変換）
         fileReader.readAsDataURL(file);
     });
 });

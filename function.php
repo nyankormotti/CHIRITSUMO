@@ -95,6 +95,8 @@ function validInput($str, $key) {
 // 最大文字数チェック
 function validMaxLen($str,$key,$max = 255) {
     if(mb_strlen($str) > $max){
+        debug('最大文字数:'. mb_strlen($str));
+        debug('判定：'.$max);
         global $err_msg;
         $err_msg[$key] = $max.MSG02;
     }
@@ -138,8 +140,6 @@ function validEmailDup($email){
         $stmt = queryPost( $dbh, $sql, $data);
         // クエリ結果を取得
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        // debug('クエリ結果：'.print_r($stmt));
-        // debug('クエリ結果2：'.print_r($result));
 
         if(!empty(array_shift($result))){
             $err_msg['email'] = MSG08;
@@ -168,29 +168,9 @@ function validMatch($str1,$str2,$key){
     }
 }
 
-// 日付形式チェック
-// function validDateFormat($str,$key){
-//     debug('日付'.$str);
-//     $v_yaer = mb_substr($str,0,4);
-//     $v_month = mb_substr($str,5,2);
-//     $v_day = mb_substr($str,8);
-//     debug('年：'. $v_yaer);
-//     debug('月：'. $v_month);
-//     debug('日：'. $v_day);
-//     if (!strptime($str, '%Y-%m-%d') || !is_int($v_yaer) || !is_int($v_month) || !is_int($v_day)) {
-//         global $err_msg;
-//         $err_msg[$key] = MSG10;
-        
-//     }
-    
-// }
-
 // 日付チェック
 function validDate($str, $key){
     list($Y, $m, $d) = explode('-', $str);
-    // debug('年２：'.$Y);
-    // debug('月２：'.$m);
-    // debug('日２：'.$d);
 
     if(!is_numeric($Y) || !is_numeric($m) || !is_numeric($d)){
         global $err_msg;
@@ -230,7 +210,7 @@ function dbConnect() {
         // デフォルトフェッチモードを連想配列方式に設定
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         // バッファモードクエリを使う(一度に結果セットを全て取得し、サーバー負荷を軽減)
-        // SELECTで得た結果に対してもroeCountメソッドを使えるようにする
+        // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
         PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
     );
      // PDOオブジェクト生成(DB接続)
@@ -246,20 +226,14 @@ function queryPost($dbh, $sql, $data) {
     // プレースホルダーに値をセットし、SQL文を実行
     if(!$stmt->execute($data)){
         global $err_msg;
-        // debug('クエリに失敗しました。');
-        // debug('SQLエラー：'.print_r($stmt->errorInfo().true));
-        // debug('失敗したSQL：'.print_r($stmt,true));
         $err_msg['common'] = MSG07;
         return 0;
     }
-    // debug('クエリ成功。');
-    // debug('クエリ：', $stmt);
     return $stmt;
 }
 
 // ユーザー情報を取得
 function getUser($u_id){
-    // debug('ユーザー情報を取得します。');
     // 例外処理
     try{
         // DB接続
@@ -286,9 +260,6 @@ function getUser($u_id){
 
 // GETで取得した実績IDに紐づく実績情報を取得
 function getPerformance($u_id,$p_id){
-    // debug('実績情報を取得します。');
-    // debug('ユーザーID：'.$u_id);
-    // debug('実績ID：'.$p_id);
     // 例外処理
     try{
         // DB接続
@@ -307,10 +278,10 @@ function getPerformance($u_id,$p_id){
         }
     }catch(Exception $e){
         error_log('エラー発生：'.$e->getMessage());
-        // debug('SQLエラーが発生しました。');
     }
 }
 
+// ユーザーIDに紐づく全ての実績情報を取得
 function getPerfAll(){
 
     // 例外処理
@@ -333,17 +304,12 @@ function getPerfAll(){
 
     }catch(Exception $e){
         error_log('エラー発生：' . $e->getMessage());
-        // debug('SQLエラーが発生しました。');
     }
 }
 
-// ユーザーIDに紐づく全ての実績情報を取得
+// ユーザーIDに紐づくの実績情報を取得(一覧表自分のみ(20件))
 function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMinNum = 1 ,$span = 20)
 {
-    // debug('実績情報を取得します。');
-    // debug('ユーザーID：' . $u_id);
-    // debug('開始年月：'.$startDate);
-    // debug('終了年月：'.$endDate);
     // 例外処理
     try {
         // DB接続
@@ -369,6 +335,7 @@ function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMi
         $data = array(':u_id' => $u_id);
         // クエリ実行
         $stmt = queryPost($dbh, $sql, $data);
+        // トータルページ数を所得
         $rst['total'] = $stmt->rowCount();
         $rst['total_page'] = ceil( $rst['total']/$span);
 
@@ -397,7 +364,6 @@ function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMi
         $data = array(':u_id' => $u_id);
         // クエリ実行
         $stmt = queryPost($dbh, $sql, $data);
-        // debug('SQL：'.$sql);
 
         if ($stmt && $stmt->rowCount() > 0) {
             //クエリ結果のデータを全レコードを格納
@@ -408,13 +374,11 @@ function getPerformanceAll($u_id,$category,$sort,$startDate,$endDate, $currentMi
         }
     } catch (Exception $e) {
         error_log('エラー発生：' . $e->getMessage());
-        // debug('SQLエラーが発生しました。');
     }
 }
 
-// カテゴリー情報を取得
+// ユーザーIDにひもづくカテゴリー情報を取得
 function getCategory($u_id){
-    // debug('カテゴリー情報を取得します。');
     // 例外処理
     try{
         // DB接続
@@ -434,13 +398,11 @@ function getCategory($u_id){
 
     }catch(Exception $e){
         error_log('エラー発生：'.$e->getMessage());
-        // debug('SQLエラーが発生しました。');
     }
 }
 
 // カテゴリーIDに紐づく実績情報の件数を取得
 function getPerfCate($c_id){
-    // debug('カテゴリー情報を取得します。');
     // 例外処理
     try{
          // DB接続
@@ -453,22 +415,18 @@ function getPerfCate($c_id){
         $stmt = queryPost($dbh, $sql,$data );
 
         if($stmt && $stmt->rowCount() > 0){
-            // debug('true');
              return true;
         }else{
-            // debug('false');
              return false;
         }
     }catch (Exception $e){
          error_log('エラー発生：'.$e-> getMessage());
-        // debug('SQLエラーが発生しました。');
     }
 }
 
-// カテゴリーIDに紐づく実績情報の件数を取得
+// カテゴリーIDに紐づくカテゴリー情報のカテゴリー名を取得
 function getCategoryName($c_id)
 {
-    // debug('カテゴリー情報を取得します。');
     // 例外処理
     try {
         // DB接続
@@ -481,41 +439,15 @@ function getCategoryName($c_id)
         $stmt = queryPost($dbh, $sql, $data);
 
         if ($stmt && $stmt->rowCount() > 0) {
-            // debug('true');
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
-            // debug('false');
             return false;
         }
     } catch (Exception $e) {
         error_log('エラー発生：' . $e->getMessage());
-        // debug('SQLエラーが発生しました。');
     }
 }
 
-// 累計時間を取得
-function getTotalTime($u_id){
-    // debug('累計時間を取得します。');
-    // 例外処理
-    try{
-        // DB接続
-        $dbh = dbConnect();
-        // SQL文作成
-        $sql = 'SELECT * FROM total_active_time WHERE user_id = :u_id AND delete_flg = 0';
-        $data = array(':u_id' => $u_id);
-        // クエリ実行
-        $stmt = queryPost($dbh, $sql, $data);
-        if($stmt){
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } else {
-            return false;
-        }
-    }catch(Exception $e){
-        error_log('エラー発生：'.$e->getMessage());
-        // debug('SQLエラーが発生しました。');
-
-    }
-}
 
 // ========================
 // メール送信
@@ -554,14 +486,10 @@ function getFormData($str, $flg = false){
         $method = $_POST;
     }
     global $dbFormData;
-    // debug('methodの情報：'.print_r($method,true));
-    // debug('getFormDataのDB情報:'.print_r($dbFormData[$str],true));
     // ユーザーデータがある場合
     if(!empty($dbFormData)){
-        // debug('ユーザー情報あり');
         // フォームのエラーがある場合
         if(!empty($err_msg[$str])){
-            // debug('エラーあり');
             // POSTにデータがある場合
             if(isset($method[$str])){
                 // debug('postに情報あり');
@@ -575,7 +503,6 @@ function getFormData($str, $flg = false){
             if(isset($method[$str]) && $method[$str] !== $dbFormData[$str]){
                 return sanitize($method[$str]);
             }else{
-                // debug( 'DB情報：' . print_r($dbFormData[$str], true));
                 return sanitize($dbFormData[$str]);
             }
         }
@@ -591,7 +518,6 @@ function getFormData($str, $flg = false){
 function getSessionFlash($key){
     if(!empty($_SESSION[$key])){
         $data = $_SESSION[$key];
-        // debug('if文中msg_success'.$data);
         $_SESSION[$key] = '';
         return $data;
     }
@@ -609,8 +535,6 @@ function makeRandkey($length = 8) {
 
 // 画像処理
 function uploadImg($file,$key){
-    // debug('画像アップロード処理開始');
-    // debug('FILE情報'.print_r($file,true));
 
     if(isset($file['error']) && is_int($file['error'])) {
 
@@ -629,22 +553,21 @@ function uploadImg($file,$key){
                     throw new RuntimeException('その他のエラーが派生しました。');
             }
 
-            // debug('$file_error:'.print_r( $file['error'],true));
-
+            // MINEタイプを取得
             $type = @exif_imagetype($file['tmp_name']);
             if(!in_array($type,[IMAGETYPE_GIF,IMAGETYPE_JPEG,IMAGETYPE_PNG], true)){
                 throw new RuntimeException('画像形式が未対応です。');
             }
 
+            // sha1_file:ハッシュ化する関数
             $path = 'uploads/'.sha1_file($file['tmp_name']).image_type_to_extension($type);
             if(!move_uploaded_file($file['tmp_name'],$path)){
                 throw new RuntimeException('ファイル保存時にエラーが発生しました');
             }
 
+            // 保存したファイルパスの権限を保存
             chmod($path,0644);
 
-            // debug('ファイルパスは正常にアップロードされました。');
-            // debug('ファイルパス'.$path);
             return $path;
 
         } catch(Exception $e){
@@ -656,6 +579,7 @@ function uploadImg($file,$key){
     }
 }
 
+// 合計(時間)の算出
 function sumHourTime($dbPerfData){
     $total_time = 0;
     $total_hour = 0;
@@ -675,6 +599,7 @@ function sumHourTime($dbPerfData){
     
 }
 
+// 合計(分)の算出
 function sumMinuteTime($dbPerfData){
     $total_time = 0;
     $total_hour = 0;
@@ -696,23 +621,13 @@ function sumMinuteTime($dbPerfData){
 function timeSum($dbPerfData)
 {
     $total_time = 0;
-    // $total_minute = 0;
     foreach ($dbPerfData['data'] as $key => $val) {
         $total_time = $total_time + strtotime($val['action_time']);
-        // debug(''.print_r(idate($val['action_time']),true));
     }
-    
-    
-    // debug(''.print_r(( floor($total_time / 3600)%24 . ':' . floor($total_time / 60) % 60),true));
 
     return floor($total_time/3600) . ':' . floor( $total_time /60)%60;
 }
-// function getSumTime($source_time, $add_time)
-// {
-//     $source_times = explode(":", $source_time);
-//     $add_times = explode(":", $add_time);
-//     return date("H:i:s", mktime($source_times[0] + $add_times[0], $source_times[1] + $add_times[1], $source_times[2] + $add_times[2]));
-// }
+
 
 // ページング
 function pagination($currentPageNum, $totalPageNum, $c_id = '', $sort = '', $start_year = '',$start_month = '',$end_year = '', $end_month = '', $search = '', $link = '', $pageColNum = 5){
@@ -742,9 +657,6 @@ function pagination($currentPageNum, $totalPageNum, $c_id = '', $sort = '', $sta
         $maxPageNum = $currentPageNum + 2;
     }
 
-    // debug('最大ページ数：'.$maxPageNum);
-    // debug('トータルページ数：'.$totalPageNum);
-    // debug('リンク：'.$link);
 
     echo '<div class="pagination">';
     echo '<ul class="pagination-list">';
@@ -784,7 +696,7 @@ function pagination($currentPageNum, $totalPageNum, $c_id = '', $sort = '', $sta
 }
 
 // GETパラメータの付与
-// $del_key：付与から取り除くきたいGETパラメータのキー
+// $del_key：付与から取り除きたいGETパラメータのキー
 function appendGetParam($del_key = array()){
     if(!empty($_GET)){
         $str = '?';

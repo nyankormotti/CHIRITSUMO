@@ -16,12 +16,9 @@ require('auth.php');
 
 // DBからユーザーデータを取得
 $userData = getUser($_SESSION['user_id']);
-// debug('取得したユーザー情報：' . print_r($userData, true));
 
 // post送信されていた場合
 if (!empty($_POST)) {
-    // debug('POST送信があります。');
-    // debug('POST送信：' . print_r($_POST, true));
 
     // 変数にユーザー情報を代入
     $pass_old = $_POST['old_pass'];
@@ -34,7 +31,6 @@ if (!empty($_POST)) {
     validInput($pass_new_re, 'new_pass_re');
 
     if (empty($err_msg)) {
-        // debug('未入力チェックOK');
 
         // 古いパスワードチェック
         validPass($pass_old, 'old_pass');
@@ -52,7 +48,6 @@ if (!empty($_POST)) {
         validMatch($pass_new, $pass_new_re, 'new_pass_re');
 
         if (empty($err_msg)) {
-            // debug('バリエーションOK。');
 
             // 例外処理
             try {

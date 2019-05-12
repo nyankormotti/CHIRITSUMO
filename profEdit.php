@@ -15,22 +15,16 @@ require('auth.php');
 // =================
 // DBからユーザー情報を取得
 $dbFormData = getUser($_SESSION['user_id']);
-// debug('取得したユーザー情報：' . print_r($dbFormData, true));
 
 // post送信された場合
 if (!empty($_POST)) {
-    // debug('POST送信があります');
-    // debug('POST送信：' . print_r($_POST, true));
-    // debug('FILE送信：' . print_r($_FILES, true));
 
     // 変数にユーザー情報を代入
     $username = $_POST['username'];
     $email = $_POST['email'];
-    // debug('画像アップロード前');
     // 画像をアップロードし、パスを格納
     $pic = (!empty($_FILES['pic']['name'])) ? uploadImg($_FILES['pic'], 'pic') : '';
     $pic = (empty($pic) && !empty($dbFormData['pic'])) ? $dbFormData['pic'] : $pic;
-    // debug('画像アップロード後' . $pic);
 
     // 未入力チェック
     validInput($username, 'username');
@@ -49,14 +43,10 @@ if (!empty($_POST)) {
             validMaxLen($email, 'email');
             // Emailの形式チェック
             validEmail($email, 'email');
-            // if (empty($err_msg['email'])) {
-            //     validEmailDup($email);
-            // }
         }
 
 
         if (empty($err_msg)) {
-            // debug('バリデーションチェックOK');
 
             // 例外処理
             try {
@@ -71,7 +61,6 @@ if (!empty($_POST)) {
                 // クエリ成功
                 if ($stmt) {
                     $_SESSION['msg_success'] = SUS02;
-                    // debug('マイページへ移動します。');
                     header("Location:mypage.php");
                 }
             } catch (Exception $e) {

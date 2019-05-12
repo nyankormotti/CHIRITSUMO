@@ -16,7 +16,6 @@ require('auth.php');
 
 // post送信されていた場合
 if (!empty($_POST)) {
-    // debug('POST送信があります。');
 
     // 例外処理
     try {
@@ -37,8 +36,6 @@ if (!empty($_POST)) {
         if ($stmt1) {
             // セッションを削除
             session_destroy();
-            // debug('セッション変数の中身：' . print_r($_SESSION, true));
-            // debug('トップページへ遷移します。');
             header("Location:index.php");
         } else {
             // debug('クエリが失敗した。');
@@ -49,8 +46,6 @@ if (!empty($_POST)) {
         $err_msg['common'] = MSG07;
     }
 }
-
-// debug('画面表示処理終了============');
 
 ?>
 

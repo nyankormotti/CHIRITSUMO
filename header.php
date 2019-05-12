@@ -11,7 +11,6 @@
             ?>
                 <a href="mypage.php">継続支援アプリ CHIRITSUMO!!</a>
             <?php
-
         }
         ?>
 

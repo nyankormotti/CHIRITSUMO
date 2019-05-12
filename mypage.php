@@ -27,6 +27,8 @@ $listSpan = 20;
 $currentMinNum = (($currentPageNum - 1) * $listSpan);
 $startDate = '';
 $endDate = '';
+// 検索ボタンをクリックした場合の処理
+// 検索期間の年月日の編集
 if (!empty($_GET['search'])) {
     if (((int)$_GET['start-year'] === 0 || (int)$_GET['start-month'] === 0 || (int)$_GET['end-year'] === 0 || (int)$_GET['end-month'] === 0) && ((int)$_GET['start-year'] !== 0 || (int)$_GET['start-month'] !== 0 || (int)$_GET['end-year'] !== 0 || (int)$_GET['end-month'] !== 0)) {
         global $$err_msg;
@@ -67,7 +69,6 @@ if (!empty($dbFormData['pic'])) {
 }
 
 $nowDate = strtotime(reset($dbPerfData_Prof['data'])['action_date']);
-
 
 ?>
 
@@ -140,11 +141,7 @@ require('head.php');
                     }
                     ?>
                     </div>
-
-
                 </div>
-
-
             </div>
 
             <!-- 実績結果 -->
@@ -187,7 +184,6 @@ require('head.php');
                                             <div class="selectbox">
                                                 <span class="icn_select"></span>
                                                 <select name="sort" id="">
-                                                    <!-- <option value="0">選択してください</option> -->
                                                     <option value="1">新しい順</option>
                                                     <option value="2">古い順</option>
                                                 </select>

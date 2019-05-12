@@ -7,10 +7,8 @@ require('function.php');
 // debug('==============================');
 // debugLogStart();
 
-// debug('ログアウトします。');
 // セッションを削除(ログアウト)
 session_destroy();
-// debug('ログインページに遷移します。');
 // ログインページへ
 header("Location:login.php");
 ?>
