@@ -39,7 +39,6 @@ session_regenerate_id();
 function debugLogStart(){
     // debug('============画面表示処理開始');
     // debug('セッションID：'.session_id());
-
 }
 
 // ==========================
